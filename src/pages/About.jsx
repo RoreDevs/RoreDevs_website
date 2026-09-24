@@ -67,7 +67,7 @@ export default function About() {
           >
             <motion.div variants={fadeUp()}>
               <span className="badge bg-primary/10 text-primary border border-primary/20">
-                Our story
+                Who we are
               </span>
             </motion.div>
 
@@ -76,16 +76,15 @@ export default function About() {
               className="text-display-lg md:text-display-xl text-ink"
             >
               About{" "}
-              <span className="text-primary">NovuTech</span>
+              <span className="text-primary">RoreDevs</span>
             </motion.h1>
 
             <motion.p
               variants={fadeUp()}
               className="text-lg md:text-xl text-ink-secondary leading-relaxed max-w-2xl"
             >
-              We're four students who got tired of building things nobody uses.
-              So we started building things people do, learning in public,
-              shipping imperfect code, and figuring it out as we go.
+              A community of student developers learning, building, and
+              open-sourcing real projects together.
             </motion.p>
           </motion.div>
         </div>
@@ -115,30 +114,30 @@ export default function About() {
               </motion.h2>
 
               <motion.p variants={fadeUp()} className="text-base md:text-lg text-ink-secondary leading-relaxed">
-                It started with a shared frustration. We were deep into our coursework,
-                learning data structures, design patterns, and deployment pipelines,
-                yet everything we built existed only to be graded, then forgotten.
-                Theory without application felt hollow.
+                RoreDevs started with a simple frustration. We were students
+                learning to code in classrooms, but most of what we built
+                existed only to be graded, then forgotten. Theory without
+                practice felt hollow.
               </motion.p>
 
               <motion.p variants={fadeUp()} className="text-base md:text-lg text-ink-secondary leading-relaxed">
-                So the four of us, Rosie, Erica, Obed, and Raymond, made a decision:
-                we'd stop waiting until we felt "ready" and start shipping instead.
-                NovuTech was the name we gave to that commitment.
+                So a small group of us decided to stop waiting until we felt
+                "ready" and start building instead. What began as a few students
+                shipping side projects is growing into a community of developers
+                who learn by building in the open.
               </motion.p>
 
               <motion.p variants={fadeUp()} className="text-base md:text-lg text-ink-secondary leading-relaxed">
-                Our first two projects came directly from problems we lived.{" "}
-                <strong className="text-ink font-semibold">SkillSwap</strong> grew
-                out of wanting a better way to learn from peers, a platform where
-                students trade skills rather than pay tuition.{" "}
+                Our early projects came straight from problems we lived.{" "}
+                <strong className="text-ink font-semibold">Seemul</strong> grew
+                out of wanting a better way to learn from peers, and{" "}
                 <strong className="text-ink font-semibold">Acadex</strong> became
-                the academic toolkit we wished existed when deadlines piled up and
-                our notes were scattered across five different apps.
+                the academic toolkit we wished existed when deadlines piled up.
               </motion.p>
 
               <motion.p variants={fadeUp()} className="text-base md:text-lg text-ink-secondary leading-relaxed">
-                Neither shipped perfectly. One shipped, the other is under construction. That's the point.
+                None of them shipped perfectly. Some are still under construction.
+                That's the point — we're learning as we build.
               </motion.p>
             </div>
 
@@ -153,7 +152,7 @@ export default function About() {
                   We built it anyway. That's still our strategy.
                 </blockquote>
                 <p className="text-sm text-white/70 font-medium">
-                 - NovuTech
+                 - RoreDevs
                 </p>
               </div>
             </motion.div>
@@ -184,17 +183,16 @@ export default function About() {
             </motion.h2>
 
             <motion.p variants={fadeUp()} className="text-base md:text-lg text-ink-secondary leading-relaxed">
-              NovuTech exists to close the gap between learning and doing.
-              We believe the fastest path to becoming a good developer isn't reading
-              about software, it's writing it, breaking it, and shipping it to real
-              people who will immediately find the edge cases you missed.
+              RoreDevs is a community for student developers. We exist to close
+              the gap between learning and doing: we learn by building real
+              projects, we build in the open, and we share what we learn so we
+              grow together.
             </motion.p>
 
             <motion.p variants={fadeUp()} className="text-base md:text-lg text-ink-secondary leading-relaxed">
-              We build in public because vulnerability accelerates growth. We document
-              our process because future-us deserves context. We support each other
-              because the best code comes out of a team that trusts each other enough
-              to say "I have no idea what this is doing."
+              We don't pretend to have it all figured out. We document our
+              process, contribute to open source, and support each other through
+              the messy parts of learning to ship real software.
             </motion.p>
 
             {/* Mission pillars */}
@@ -203,10 +201,10 @@ export default function About() {
               className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4 text-left"
             >
               {[
-                { value: "Learn",   sub: "by building, not just reading"  },
-                { value: "Ship",    sub: "real products, not just demos"   },
-                { value: "Document",sub: "the journey, not just the result"},
-                { value: "Support", sub: "each other, always"              },
+                { value: "Learn",   sub: "by building real projects"  },
+                { value: "Build",   sub: "in the open, together"      },
+                { value: "Share",   sub: "ideas and knowledge"         },
+                { value: "Grow",    sub: "as a community"              },
               ].map(({ value, sub }) => (
                 <motion.div
                   key={value}
@@ -241,9 +239,9 @@ export default function About() {
               </span>
               <h2 className="text-display-md text-ink mt-3">How we work</h2>
               <p className="mt-3 text-base text-ink-secondary leading-relaxed">
-                Four people, one shared codebase, and a group chat that never
-                quite goes quiet. Here's what keeps us from stepping on each
-                other's toes, most of the time.
+                We're students, not a corporation. We work in the open, keep our
+                projects collaborative, and learn as we go — here's what keeps us
+                moving.
               </p>
             </motion.div>
 
@@ -282,7 +280,7 @@ export default function About() {
       {/* ════════════════════════════════════════════════════════════════
           5. CTA
       ════════════════════════════════════════════════════════════════ */}
-      <section className="section bg-surface-white">
+      <section className="section bg-surface-soft">
         <div className="container-page">
           <motion.div
             variants={stagger()}
@@ -296,24 +294,24 @@ export default function About() {
               aria-hidden="true"
               className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-white text-xl font-bold select-none"
             >
-              N
+              R
             </motion.div>
 
             <motion.h2 variants={fadeUp()} className="text-display-sm text-ink">
-              Meet the people behind it
+              Want to support or collaborate?
             </motion.h2>
 
             <motion.p
               variants={fadeUp()}
               className="text-base text-ink-secondary leading-relaxed"
             >
-              Four people, a lot of commits, and exactly zero plans to stop.
-              Come meet the team that makes NovuTech happen.
+              If you want to support the community, collaborate on a project, or
+              just follow along, reach out.
             </motion.p>
 
             <motion.div variants={fadeUp()}>
-              <Link to="/team" className="btn-primary text-base px-7 py-3">
-                Meet the Team
+              <Link to="/contact" className="btn-primary text-base px-7 py-3">
+                Work with us
                 <ArrowRight size={16} />
               </Link>
             </motion.div>

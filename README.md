@@ -1,8 +1,8 @@
-# NovuTech
+# RoreDevs
 
-> **"Four students. Countless bugs. Zero sleep."**
+> **"Learning by building. Shipping in the open. Growing together."**
 
-NovuTech is a 4-person student developer team building real, production-grade web applications. We design and ship projects like **SkillSwap**, a peer-to-peer skill exchange platform, and **Acadex**, an academic tools suite for students. This repository is the official NovuTech team website.
+RoreDevs is a community of student developers who learn by building, share ideas, and open-source real projects together. We build projects like **Seemul**, a peer-to-peer learning platform, and **Acadex**, an academic tools suite for students. This repository is the official RoreDevs website.
 
 ---
 
@@ -23,7 +23,7 @@ NovuTech is a 4-person student developer team building real, production-grade we
 ## Folder Structure
 
 ```
-NovuTech_website/
+RoreDevs_website/
 ├── public/                 # Static assets served as-is
 ├── src/
 │   ├── assets/             # Images, SVGs, and other media
@@ -38,7 +38,7 @@ NovuTech_website/
 │   ├── App.jsx             # Route definitions
 │   ├── main.jsx            # App entry point + BrowserRouter
 │   └── index.css           # Tailwind directives + global styles
-├── tailwind.config.js      # NovuTech design system (colors, type, radius)
+├── tailwind.config.js      # RoreDevs design system (colors, type, radius)
 ├── postcss.config.js
 ├── vite.config.js
 ├── .gitignore
@@ -53,8 +53,8 @@ Make sure you have **Node.js 18+** installed, then:
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/novutech/novutech-website.git
-cd novutech-website
+git clone https://github.com/Rosieeee344/RoreDevs_website.git
+cd RoreDevs_website
 
 # 2. Install dependencies
 npm install
@@ -108,4 +108,4 @@ The site uses a custom Tailwind theme built around a minimalistic startup aesthe
 
 ---
 
-*Built with too much snacks and not enough sleep. — NovuTech, 2026*
+*Built with too much snacks and not enough sleep. — RoreDevs, 2026*

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Users, Layers, Moon, Coffee } from "lucide-react";
+import { ArrowRight, Hammer, Github, BookOpen, Users } from "lucide-react";
 
 // ── Animation helpers ──────────────────────────────────────────────────────
 // Staggered parent container
@@ -21,31 +21,43 @@ const cardHover = {
   hover: { y: -4, boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.06)" },
 };
 
-// ── Stat data ──────────────────────────────────────────────────────────────
-const STATS = [
+// ── Community values ───────────────────────────────────────────────────────
+const VALUES = [
+  {
+    icon: Hammer,
+    title: "Learn by building",
+    body: "We learn by shipping real projects, not just watching tutorials. Every feature we build is a lesson.",
+  },
+  {
+    icon: Github,
+    title: "Build in the open",
+    body: "Our projects are open source. Anyone can read the code, use it, or contribute.",
+  },
+  {
+    icon: BookOpen,
+    title: "Share what we know",
+    body: "We document our process and share ideas, so others can learn alongside us.",
+  },
   {
     icon: Users,
-    value: "4",
-    label: "Developers",
-    note: "Rosie, Erica, Obed & Raymond",
+    title: "Grow together",
+    body: "We collaborate, review each other's work, and level up as a community.",
+  },
+];
+
+// ── Project teaser data ────────────────────────────────────────────────────
+const PROJECTS = [
+  {
+    name: "Seemul Website",
+    blurb: "The web version of Seemul, a peer-to-peer learning platform.",
   },
   {
-    icon: Layers,
-    value: "1",
-    label: "Live Projects",
-    note: "Acadex",
+    name: "Seemul Mobile App",
+    blurb: "The mobile version of Seemul, built for iOS and Android.",
   },
   {
-    icon: Moon,
-    value: "∞",
-    label: "Late Nights",
-    note: "We stopped counting",
-  },
-  {
-    icon: Coffee,
-    value: "100%",
-    label: "Passion",
-    note: "And maybe too much coffee",
+    name: "Acadex",
+    blurb: "An academic management platform for attendance, slides, and assignments.",
   },
 ];
 
@@ -71,21 +83,14 @@ export default function Home() {
             animate="show"
             className="flex flex-col items-center gap-7"
           >
-            {/* Label badge */}
-            <motion.div variants={fadeUp()}>
-              <span className="badge bg-primary/10 text-primary border border-primary/20">
-                Student dev team · 2026
-              </span>
-            </motion.div>
-
             {/* Main heading */}
             <motion.h1
               variants={fadeUp()}
               className="text-display-xl md:text-display-2xl text-ink max-w-3xl"
             >
-              Four students.{" "}
-              <span className="text-primary">Countless bugs.</span>{" "}
-              Zero sleep.
+              Learning by building.{" "}
+              <span className="text-primary">Shipping in the open.</span>{" "}
+              Growing together.
             </motion.h1>
 
             {/* Sub-line */}
@@ -93,10 +98,8 @@ export default function Home() {
               variants={fadeUp()}
               className="text-lg md:text-xl text-ink-secondary max-w-2xl leading-relaxed"
             >
-              Welcome to NovuTech: where ideas turn into projects…{" "}
-              <span className="text-ink-muted italic">
-                and sometimes into errors we swear we'll fix later.
-              </span>
+              RoreDevs is a community of student developers who learn by
+              building, share ideas, and open-source real projects together.
             </motion.p>
 
             {/* CTA buttons */}
@@ -104,12 +107,12 @@ export default function Home() {
               variants={fadeUp()}
               className="flex flex-col sm:flex-row items-center gap-3 mt-2"
             >
-              <Link to="/team" className="btn-primary text-base px-6 py-3">
-                Meet the Team
+              <Link to="/projects" className="btn-primary text-base px-6 py-3">
+                View Projects
                 <ArrowRight size={16} />
               </Link>
-              <Link to="/projects" className="btn-ghost text-base px-6 py-3">
-                View Projects
+              <Link to="/about" className="btn-ghost text-base px-6 py-3">
+                About the Community
               </Link>
             </motion.div>
           </motion.div>
@@ -123,7 +126,7 @@ export default function Home() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════
-          2. INTRO
+          2. COMMUNITY VALUES
       ════════════════════════════════════════════════════════════════ */}
       <section className="section bg-surface-soft">
         <div className="container-page">
@@ -132,43 +135,52 @@ export default function Home() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-80px" }}
-            className="max-w-3xl mx-auto text-center flex flex-col gap-6"
+            className="flex flex-col items-center gap-12"
           >
-            <motion.h2 variants={fadeUp()} className="text-display-md text-ink">
-              We build things that matter.
-              <br />
-              <span className="text-ink-muted font-normal">
-                (And debug them at 2 a.m.)
-              </span>
-            </motion.h2>
+            {/* Section header */}
+            <motion.div variants={fadeUp()} className="text-center max-w-2xl">
+              <h2 className="text-display-md text-ink">What we're about</h2>
+              <p className="mt-3 text-base text-ink-secondary leading-relaxed">
+                RoreDevs is a place for student developers to learn by building
+                real projects, explore technology together, and contribute to
+                open source.
+              </p>
+            </motion.div>
 
-            <motion.p
-              variants={fadeUp()}
-              className="text-base md:text-lg text-ink-secondary leading-relaxed"
+            {/* Values cards */}
+            <motion.div
+              variants={stagger(0, 0.1)}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full"
             >
-              NovuTech is a four-person student developer team on a mission to
-              ship real, production-grade software. We're not just learning
-              to code, we're building products people actually use.
-            </motion.p>
-
-            <motion.p
-              variants={fadeUp()}
-              className="text-base md:text-lg text-ink-secondary leading-relaxed"
-            >
-              Our first two projects,{" "}
-              <strong className="text-ink font-semibold">SkillSwap</strong>, a
-              peer-to-peer skill exchange platform, and{" "}
-              <strong className="text-ink font-semibold">Acadex</strong> , an
-              academic tools suite built for students, are live proof that a
-              small, motivated team can punch well above its weight. More is on
-              the way.
-            </motion.p>
+              {VALUES.map(({ icon: Icon, title, body }) => (
+                <motion.div
+                  key={title}
+                  variants={fadeUp()}
+                  initial="rest"
+                  whileHover="hover"
+                  animate="rest"
+                >
+                  <motion.div
+                    variants={cardHover}
+                    className="card h-full flex flex-col gap-4 transition-shadow duration-200"
+                  >
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary shrink-0">
+                      <Icon size={20} />
+                    </span>
+                    <div className="flex flex-col gap-2">
+                      <h3 className="text-base font-semibold text-ink">{title}</h3>
+                      <p className="text-sm text-ink-secondary leading-relaxed">{body}</p>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════════════
-          3. STATS / HIGHLIGHTS
+          3. PROJECTS TEASER
       ════════════════════════════════════════════════════════════════ */}
       <section className="section bg-surface-white">
         <div className="container-page">
@@ -177,54 +189,51 @@ export default function Home() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-80px" }}
-            className="flex flex-col items-center gap-12"
+            className="flex flex-col gap-10"
           >
-            {/* Section label */}
-            <motion.div variants={fadeUp()} className="text-center">
-              <h2 className="text-display-sm text-ink">By the numbers</h2>
-              <p className="mt-2 text-ink-muted text-sm">
-                Roughly accurate. Mostly honest.
+            {/* Section header */}
+            <motion.div variants={fadeUp()} className="max-w-xl">
+              <span className="badge bg-primary/10 text-primary border border-primary/20 mb-4">
+                What we're building
+              </span>
+              <h2 className="text-display-md text-ink mt-3">
+                Real projects, built in public
+              </h2>
+              <p className="mt-3 text-base text-ink-secondary leading-relaxed">
+                We work on real projects as a community. Here are a few of the
+                things we're currently building.
               </p>
             </motion.div>
 
-            {/* Cards grid */}
+            {/* Project teaser cards */}
             <motion.div
               variants={stagger(0, 0.1)}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 w-full"
+              className="grid grid-cols-1 md:grid-cols-3 gap-5"
             >
-              {STATS.map(({ icon: Icon, value, label, note }) => (
+              {PROJECTS.map(({ name, blurb }) => (
                 <motion.div
-                  key={label}
+                  key={name}
                   variants={fadeUp()}
                   initial="rest"
                   whileHover="hover"
                   animate="rest"
-                  // @ts-ignore — motion.div accepts both variants sets fine
                 >
                   <motion.div
                     variants={cardHover}
-                    className="card flex flex-col gap-4 h-full transition-shadow duration-200"
+                    className="card h-full flex flex-col gap-3 transition-shadow duration-200"
                   >
-                    {/* Icon */}
-                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                      <Icon size={20} />
-                    </span>
-
-                    {/* Value */}
-                    <div>
-                      <p className="text-display-md text-ink leading-none">
-                        {value}
-                      </p>
-                      <p className="mt-1 text-sm font-semibold text-ink-secondary">
-                        {label}
-                      </p>
-                    </div>
-
-                    {/* Note */}
-                    <p className="text-xs text-ink-muted mt-auto">{note}</p>
+                    <h3 className="text-base font-semibold text-ink">{name}</h3>
+                    <p className="text-sm text-ink-secondary leading-relaxed">{blurb}</p>
                   </motion.div>
                 </motion.div>
               ))}
+            </motion.div>
+
+            <motion.div variants={fadeUp()}>
+              <Link to="/projects" className="btn-ghost text-base px-7 py-3">
+                View all projects
+                <ArrowRight size={16} />
+              </Link>
             </motion.div>
           </motion.div>
         </div>
@@ -247,25 +256,25 @@ export default function Home() {
               aria-hidden="true"
               className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-white text-xl font-bold select-none"
             >
-              N
+              R
             </motion.div>
 
             <motion.h2 variants={fadeUp()} className="text-display-sm text-ink">
-              Got an idea? So do we.
+              Want to support what we're building?
             </motion.h2>
 
             <motion.p
               variants={fadeUp()}
               className="text-base text-ink-secondary leading-relaxed"
             >
-              Whether you want to collaborate, follow our work, or just say
-              hi, we'd love to hear from you. We bite less than the bugs in
-              our code.
+              We're a community of students building in the open. If you want
+              to collaborate, support us, or just follow along, we'd love to
+              hear from you.
             </motion.p>
 
             <motion.div variants={fadeUp()}>
               <Link to="/contact" className="btn-primary text-base px-7 py-3">
-                Let's build something
+                Work with us
                 <ArrowRight size={16} />
               </Link>
             </motion.div>

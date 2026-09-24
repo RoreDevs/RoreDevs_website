@@ -4,14 +4,14 @@ import { Github, Twitter, Linkedin } from "lucide-react";
 const NAV_LINKS = [
   { to: "/",         label: "Home"     },
   { to: "/about",    label: "About"    },
-  { to: "/team",     label: "Team"     },
   { to: "/projects", label: "Projects" },
+  { to: "/team",     label: "Team"     },
   { to: "/contact",  label: "Contact"  },
 ];
 
 // Placeholder socials — swap hrefs for real URLs later
 const SOCIALS = [
-  { icon: Github,   label: "GitHub",   href: "https://github.com/Rosieeee344/NovuTech_website" },
+  { icon: Github,   label: "GitHub",   href: "https://github.com/RoreDevs" },
   { icon: Twitter,  label: "Twitter",  href: "https://x.com/NovuTechHQ" },
   { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/novutech-hq" },
 ];
@@ -33,15 +33,16 @@ export default function Footer() {
                 className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary text-white text-xs font-bold select-none"
                 aria-hidden="true"
               >
-                N
+                R
               </span>
-              <span className="text-base font-semibold text-ink">NovuTech</span>
+              <span className="text-base font-semibold text-ink">RoreDevs</span>
             </div>
             <p className="text-sm text-ink-muted leading-relaxed">
-              Four students. Countless bugs. Zero sleep.
+              A community of student developers learning, building, and
+              open-sourcing together.
             </p>
             <p className="text-xs text-ink-muted leading-relaxed">
-              Building real, production-grade web apps......... one commit at a time.
+              Building real projects in the open — one commit at a time.
             </p>
           </div>
 
@@ -98,7 +99,7 @@ export default function Footer() {
         {/* ── Bottom row: copyright ───────────────────────────────── */}
         <div className="mt-10 pt-6 border-t border-border flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-ink-muted">
-            © {year} NovuTech. All rights reserved.
+            © {year} RoreDevs. All rights reserved.
           </p>
           <p className="text-xs text-ink-muted">
             Built by Rosie, Erica, Obed &amp; Raymond.

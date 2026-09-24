@@ -5,8 +5,8 @@ import { Menu, X } from "lucide-react";
 const NAV_LINKS = [
   { to: "/",         label: "Home"     },
   { to: "/about",    label: "About"    },
-  { to: "/team",     label: "Team"     },
   { to: "/projects", label: "Projects" },
+  { to: "/team",     label: "Team"     },
   { to: "/contact",  label: "Contact"  },
 ];
 
@@ -61,10 +61,10 @@ export default function Navbar() {
             className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary text-white text-xs font-bold tracking-tight select-none"
             aria-hidden="true"
           >
-            N
+            R
           </span>
           <span className="text-base font-semibold tracking-tight text-ink">
-            NovuTech
+            RoreDevs
           </span>
         </NavLink>
 

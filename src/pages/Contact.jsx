@@ -33,19 +33,19 @@ const CHANNELS = [
   {
     icon: Github,
     label: "GitHub",
-    value: "github.com/novutech",
+    value: "github.com/RoreDevs",
     href: "https://github.com/Rosieeee344/NovuTech_website",
   },
   {
     icon: Twitter,
     label: "Twitter / X",
-    value: "@novutech",
+    value: "@roredevs",
     href: "https://x.com/NovuTechHQ",
   },
   {
     icon: Linkedin,
     label: "LinkedIn",
-    value: "NovuTech",
+    value: "RoreDevs",
     href: "https://www.linkedin.com/company/novutech-hq",
   },
 ];
@@ -103,7 +103,7 @@ export default function Contact() {
           >
             <motion.div variants={fadeUp()}>
               <span className="badge bg-primary/10 text-primary border border-primary/20">
-                Let's talk
+                Work with us
               </span>
             </motion.div>
 
@@ -111,17 +111,17 @@ export default function Contact() {
               variants={fadeUp()}
               className="text-display-xl md:text-display-2xl text-ink max-w-2xl"
             >
-              Got an idea?{" "}
-              <span className="text-primary">We're listening.</span>
+              Support, collaborate,{" "}
+              <span className="text-primary">or work with us.</span>
             </motion.h1>
 
             <motion.p
               variants={fadeUp()}
               className="text-lg md:text-xl text-ink-secondary max-w-xl leading-relaxed"
             >
-              Collaboration, feedback, or just a friendly hello, drop us a
-              line and we'll get back to you (usually before our coffee gets
-              cold).
+              RoreDevs is a community of students building in the open. If you
+              want to support what we're doing, collaborate on a project,
+              contribute resources, or just follow along, drop us a line.
             </motion.p>
           </motion.div>
         </div>

@@ -1,9 +1,9 @@
-# NovuTech SEO Plan
+# RoreDevs SEO Plan
 
 ## Our Products
 
 - Acadex
-- SkillSwap
+- Seemul
 
 ## What We Build for Clients
 
@@ -22,7 +22,7 @@
 
 ## Main Positioning
 
-NovuTech builds custom web applications, educational platforms, and digital products for startups, schools, and organizations.
+RoreDevs builds custom web applications, educational platforms, and digital products for startups, schools, and organizations.
 
 ## Keyword Map
 
@@ -54,7 +54,7 @@ People looking for a team to design and build a custom web application or digita
 - Digital product team
 
 **Search intent:**  
-People who want to understand NovuTech's experience, team, values, and development approach.
+People who want to understand RoreDevs's experience, team, values, and development approach.
 
 ### Projects
 
@@ -69,7 +69,7 @@ People who want to understand NovuTech's experience, team, values, and developme
 - Digital product portfolio
 
 **Search intent:**  
-People researching examples of web applications and digital platforms built by NovuTech.
+People researching examples of web applications and digital platforms built by RoreDevs.
 
 ### Contact
 
@@ -84,7 +84,7 @@ People researching examples of web applications and digital platforms built by N
 - Contact web developers
 
 **Search intent:**  
-People interested in discussing a software project or working with NovuTech.
+People interested in discussing a software project or working with RoreDevs.
 
 ### Acadex
 
@@ -101,7 +101,7 @@ People interested in discussing a software project or working with NovuTech.
 **Search intent:**  
 Schools, lecturers, administrators, or students looking for tools to manage academic activities.
 
-### SkillSwap
+### Seemul
 
 **Main keyword:** Peer-to-peer learning platform
 
@@ -120,63 +120,63 @@ People looking for a platform that connects learners, mentors, and people who wa
 
 ### Home
 
-NovuTech builds custom web applications, educational platforms, and digital products for startups, schools, and organizations.
+RoreDevs builds custom web applications, educational platforms, and digital products for startups, schools, and organizations.
 
 ### About
 
-Meet NovuTech, a student software development team building practical web applications and digital products for real-world users.
+Meet RoreDevs, a student software development team building practical web applications and digital products for real-world users.
 
 ### Projects
 
-Explore NovuTech web application projects, including Acadex, an academic management system, and SkillSwap, a peer-learning platform.
+Explore RoreDevs web application projects, including Acadex, an academic management system, and Seemul, a peer-learning platform.
 
 ### Contact
 
-Have a software idea? Contact NovuTech to discuss custom web applications, educational platforms, and digital product development.
+Have a software idea? Contact RoreDevs to discuss custom web applications, educational platforms, and digital product development.
 
 ### Acadex
 
 Acadex is an academic management system for attendance tracking, student dashboards, lecture materials, and assignment management.
 
-### SkillSwap
+### Seemul
 
-SkillSwap is a peer-to-peer learning platform designed to connect people who want to learn, teach, and share valuable skills.
+Seemul is a peer-to-peer learning platform designed to connect people who want to learn, teach, and share valuable skills.
 
 ## Page Titles
 
 ### Home
 
-Custom Web Application Development | NovuTech
+Custom Web Application Development | RoreDevs
 
 ### About
 
-About NovuTech | Software Development Team
+About RoreDevs | Software Development Team
 
 ### Projects
 
-Web Application Projects | NovuTech
+Web Application Projects | RoreDevs
 
 ### Contact
 
-Hire Web Application Developers | NovuTech
+Hire Web Application Developers | RoreDevs
 
 ### Acadex Project
 
 Acadex | Academic Management System
 
-### SkillSwap Project
+### Seemul Project
 
-SkillSwap | Peer-to-Peer Learning Platform
+Seemul | Peer-to-Peer Learning Platform
 
 ## Content Improvements
 
 ### Home Page
 
-**Main goal:** Clearly explain what NovuTech does.
+**Main goal:** Clearly explain what RoreDevs does.
 
 **Content to include:**
 
-- NovuTech builds custom web applications and digital products.
+- RoreDevs builds custom web applications and digital products.
 - We develop educational platforms and peer-learning tools.
 - We work on our own products and build solutions for clients.
 - Our team handles frontend development, backend development, and product design.
@@ -184,7 +184,7 @@ SkillSwap | Peer-to-Peer Learning Platform
 
 **Suggested homepage message:**
 
-NovuTech is a software development team that builds custom web applications, educational platforms, and digital products for startups, schools, and organizations.
+RoreDevs is a software development team that builds custom web applications, educational platforms, and digital products for startups, schools, and organizations.
 
 ### About Page
 
@@ -192,7 +192,7 @@ NovuTech is a software development team that builds custom web applications, edu
 
 **Content to include:**
 
-- NovuTech is a product studio and software development agency.
+- RoreDevs is a product studio and software development agency.
 - The team combines frontend, backend, design, and documentation skills.
 - We build practical products that solve real-world problems.
 - We work through planning, design, development, testing, documentation, and deployment.
@@ -205,7 +205,7 @@ NovuTech is a software development team that builds custom web applications, edu
 
 - Acadex is an academic management system.
 - Acadex includes attendance tracking, student dashboards, lecture materials, and assignment management.
-- SkillSwap is a peer-to-peer learning platform.
+- Seemul is a peer-to-peer learning platform.
 - These projects demonstrate our ability to build educational and community-focused web applications.
 
 ### Contact Page
@@ -216,7 +216,7 @@ NovuTech is a software development team that builds custom web applications, edu
 
 - Invite visitors to discuss a software idea.
 - Mention custom web applications, educational platforms, and digital products.
-- Explain that NovuTech works with startups, schools, organizations, and entrepreneurs.
+- Explain that RoreDevs works with startups, schools, organizations, and entrepreneurs.
 - Add a clear call to action such as “Discuss your project with us.”
 
 ## Technical SEO Checklist
@@ -311,11 +311,11 @@ The website currently has these public routes:
 | ----------- | -------- | ------------------------------------ |
 | `/`         | Home     | Custom web application development   |
 | `/about`    | About    | Software development team            |
-| `/team`     | Team     | NovuTech developers and product team |
+| `/team`     | Team     | RoreDevs developers and product team |
 | `/projects` | Projects | Web application projects             |
 | `/contact`  | Contact  | Hire web application developers      |
 
-Acadex and SkillSwap are currently sections within the Projects page, not separate routes. Their SEO descriptions should therefore support the Projects page unless dedicated project pages are created later.
+Acadex and Seemul are currently sections within the Projects page, not separate routes. Their SEO descriptions should therefore support the Projects page unless dedicated project pages are created later.
 
 ## SEO Priorities
 
