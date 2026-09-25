@@ -291,13 +291,13 @@ export default function Projects() {
             viewport={{ once: true, margin: "-80px" }}
             className="max-w-2xl mx-auto text-center flex flex-col items-center gap-6"
           >
-            <motion.div
-              variants={fadeUp()}
-              aria-hidden="true"
-              className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-white text-xl font-bold select-none"
-            >
-              R
-            </motion.div>
+            <motion.img
+            src={logo}
+            alt="RoreDevs logo"
+            variants={fadeUp()}
+            aria-hidden="true"
+            className="h-12 w-12 rounded-2xl object-cover"
+            />
 
             <motion.h2 variants={fadeUp()} className="text-display-sm text-ink">
               More on the way
@@ -313,7 +313,7 @@ export default function Projects() {
 
             <motion.div variants={fadeUp()}>
               <a
-                href="https://github.com/Rosieeee344/NovuTech_website"
+                href="https://github.com/Rosieeee344/RoreDevs_website"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-ghost text-base px-7 py-3"

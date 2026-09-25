@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { Github, Twitter, Linkedin } from "lucide-react";
+import logo from '../assets/ROREDEVS.png';
 
 const NAV_LINKS = [
   { to: "/",         label: "Home"     },
@@ -12,8 +13,8 @@ const NAV_LINKS = [
 // Placeholder socials — swap hrefs for real URLs later
 const SOCIALS = [
   { icon: Github,   label: "GitHub",   href: "https://github.com/RoreDevs" },
-  { icon: Twitter,  label: "Twitter",  href: "https://x.com/NovuTechHQ" },
-  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/novutech-hq" },
+  { icon: Twitter,  label: "Twitter",  href: "https://x.com/RoreDevsHQ" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/roredevs-hq" },
 ];
 
 export default function Footer() {
@@ -29,12 +30,11 @@ export default function Footer() {
           {/* Brand block */}
           <div className="flex flex-col gap-3 max-w-xs">
             <div className="flex items-center gap-2">
-              <span
-                className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary text-white text-xs font-bold select-none"
-                aria-hidden="true"
-              >
-                R
-              </span>
+              <img
+              src={logo}
+              alt="RoreDevs logo"
+              className="h-7 w-7 rounded-lg object-cover"
+/>
               <span className="text-base font-semibold text-ink">RoreDevs</span>
             </div>
             <p className="text-sm text-ink-muted leading-relaxed">
