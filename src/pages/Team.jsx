@@ -4,6 +4,7 @@ import ericaImg from "../assets/Erica.jpg";
 import obedImg from "../assets/Obed.png";
 import raymondImg from "../assets/Raymond.jpg";
 import rosemaryImg from "../assets/Rosemary.jpeg";
+import kobbyImg from "../assets/Kobby.jpg";
 import logo from '../assets/ROREDEVS.png';
 
 // ── Animation helpers ──────────────────────────────────────────────────────
@@ -77,7 +78,22 @@ const FOUNDERS = [
   },
 ];
 
-const CONTRIBUTORS = [];
+const CONTRIBUTORS = [
+   {
+    image: kobbyImg,
+    name: "Godfred Eduful",
+    initials: "GE",
+    role: "A Contributor to Acadex KTU",
+    bio: "Bring work",
+    socials: {
+      Facebook: "https://m.facebook.com/godfred.eduful.319/",
+      Instagram: "https://www.instagram.com/_kobby_pounds/",
+      Twitter: "https://x.com/_kobby_pounds",
+      Linkedin: "https://www.linkedin.com/in/godfred-eduful-743b2b350",
+      Github: "https://github.com/geduful",
+    },
+  },
+];
 
 const MAINTAINERS = [];
 
