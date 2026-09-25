@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { Github, Twitter, Linkedin } from "lucide-react";
+import logo from '../assets/ROREDEVS.png';
 
 const NAV_LINKS = [
   { to: "/",         label: "Home"     },
@@ -29,12 +30,11 @@ export default function Footer() {
           {/* Brand block */}
           <div className="flex flex-col gap-3 max-w-xs">
             <div className="flex items-center gap-2">
-              <span
-                className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary text-white text-xs font-bold select-none"
-                aria-hidden="true"
-              >
-                R
-              </span>
+              <img
+              src={logo}
+              alt="RoreDevs logo"
+              className="h-7 w-7 rounded-lg object-cover"
+/>
               <span className="text-base font-semibold text-ink">RoreDevs</span>
             </div>
             <p className="text-sm text-ink-muted leading-relaxed">
