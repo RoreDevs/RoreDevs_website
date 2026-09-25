@@ -12,6 +12,7 @@ import {
   ArrowRight,
   Sparkles,
 } from "lucide-react";
+import logo from '../assets/ROREDEVS.png';
 
 // ── Animation helpers (mirrors Home.jsx pattern) ───────────────────────────
 const stagger = (delayChildren = 0.05, staggerChildren = 0.12) => ({
@@ -104,11 +105,6 @@ export default function Projects() {
             animate="show"
             className="flex flex-col items-center gap-6"
           >
-            <motion.div variants={fadeUp()}>
-              <span className="badge bg-primary/10 text-primary border border-primary/20">
-                What we build
-              </span>
-            </motion.div>
 
             <motion.h1
               variants={fadeUp()}
@@ -148,9 +144,6 @@ export default function Projects() {
           >
             {/* Section header */}
             <motion.div variants={fadeUp()} className="max-w-xl">
-              <span className="badge bg-primary/10 text-primary border border-primary/20 mb-4">
-                Featured project
-              </span>
               <h2 className="text-display-md text-ink mt-3">
                 {PROJECTS[0].name}
               </h2>
@@ -237,9 +230,6 @@ export default function Projects() {
           >
             {/* Section header */}
             <motion.div variants={fadeUp()} className="max-w-xl">
-              <span className="badge bg-primary/10 text-primary border border-primary/20 mb-4">
-                In development
-              </span>
               <h2 className="text-display-md text-ink mt-3">Seemul</h2>
               <p className="mt-3 text-base text-ink-secondary leading-relaxed">
                 Seemul is a peer-to-peer learning platform we're building as one

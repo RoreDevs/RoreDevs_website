@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Hammer, BookOpen, Rocket, Heart } from "lucide-react";
+import logo from '../assets/ROREDEVS.png';
 
 // ── Animation helpers (mirrors Home.jsx pattern) ───────────────────────────
 const stagger = (delayChildren = 0.05, staggerChildren = 0.12) => ({
@@ -65,12 +66,6 @@ export default function About() {
             animate="show"
             className="max-w-3xl flex flex-col gap-5"
           >
-            <motion.div variants={fadeUp()}>
-              <span className="badge bg-primary/10 text-primary border border-primary/20">
-                Who we are
-              </span>
-            </motion.div>
-
             <motion.h1
               variants={fadeUp()}
               className="text-display-lg md:text-display-xl text-ink"
@@ -172,11 +167,7 @@ export default function About() {
             viewport={{ once: true, margin: "-80px" }}
             className="max-w-3xl mx-auto text-center flex flex-col gap-7"
           >
-            <motion.div variants={fadeUp()}>
-              <span className="badge bg-primary/10 text-primary border border-primary/20">
-                What we stand for
-              </span>
-            </motion.div>
+            
 
             <motion.h2 variants={fadeUp()} className="text-display-md text-ink">
               Our mission
@@ -234,9 +225,6 @@ export default function About() {
           >
             {/* Header */}
             <motion.div variants={fadeUp()} className="max-w-xl">
-              <span className="badge bg-primary/10 text-primary border border-primary/20 mb-4">
-                Our approach
-              </span>
               <h2 className="text-display-md text-ink mt-3">How we work</h2>
               <p className="mt-3 text-base text-ink-secondary leading-relaxed">
                 We're students, not a corporation. We work in the open, keep our
@@ -289,13 +277,13 @@ export default function About() {
             viewport={{ once: true, margin: "-80px" }}
             className="max-w-2xl mx-auto text-center flex flex-col items-center gap-6"
           >
-            <motion.div
-              variants={fadeUp()}
-              aria-hidden="true"
-              className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-white text-xl font-bold select-none"
-            >
-              R
-            </motion.div>
+            <motion.img
+            src={logo}
+            alt="RoreDevs logo"
+            variants={fadeUp()}
+            aria-hidden="true"
+            className="h-12 w-12 rounded-2xl object-cover"
+            />
 
             <motion.h2 variants={fadeUp()} className="text-display-sm text-ink">
               Want to support or collaborate?

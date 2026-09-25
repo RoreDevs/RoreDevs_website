@@ -10,6 +10,7 @@ import {
   CheckCircle2,
   Loader2,
 } from "lucide-react";
+import logo from '../assets/ROREDEVS.png';
 
 // ── Animation helpers (mirrors Home.jsx) ────────────────────────────────────
 const stagger = (delayChildren = 0.05, staggerChildren = 0.12) => ({
@@ -101,12 +102,6 @@ export default function Contact() {
             animate="show"
             className="flex flex-col items-center gap-6"
           >
-            <motion.div variants={fadeUp()}>
-              <span className="badge bg-primary/10 text-primary border border-primary/20">
-                Work with us
-              </span>
-            </motion.div>
-
             <motion.h1
               variants={fadeUp()}
               className="text-display-xl md:text-display-2xl text-ink max-w-2xl"

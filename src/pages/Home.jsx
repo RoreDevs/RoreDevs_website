@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Hammer, Github, BookOpen, Users } from "lucide-react";
+import logo from '../assets/ROREDEVS.png';
 
 // ── Animation helpers ──────────────────────────────────────────────────────
 // Staggered parent container
@@ -193,9 +194,6 @@ export default function Home() {
           >
             {/* Section header */}
             <motion.div variants={fadeUp()} className="max-w-xl">
-              <span className="badge bg-primary/10 text-primary border border-primary/20 mb-4">
-                What we're building
-              </span>
               <h2 className="text-display-md text-ink mt-3">
                 Real projects, built in public
               </h2>

@@ -4,6 +4,7 @@ import ericaImg from "../assets/Erica.jpg";
 import obedImg from "../assets/Obed.png";
 import raymondImg from "../assets/Raymond.jpg";
 import rosemaryImg from "../assets/Rosemary.jpeg";
+import logo from '../assets/ROREDEVS.png';
 
 // ── Animation helpers ──────────────────────────────────────────────────────
 const stagger = (delayChildren = 0.05, staggerChildren = 0.12) => ({
@@ -101,12 +102,6 @@ export default function Team() {
             animate="show"
             className="flex flex-col items-center gap-6"
           >
-            <motion.div variants={fadeUp()}>
-              <span className="badge bg-primary/10 text-primary border border-primary/20">
-                Our people
-              </span>
-            </motion.div>
-
             <motion.h1
               variants={fadeUp()}
               className="text-display-xl md:text-display-2xl text-ink max-w-2xl"
@@ -144,9 +139,6 @@ export default function Team() {
           >
             {/* Section header */}
             <motion.div variants={fadeUp()} className="max-w-xl">
-              <span className="badge bg-primary/10 text-primary border border-primary/20 mb-4">
-                Founders
-              </span>
               <h2 className="text-display-md text-ink mt-3">Founders</h2>
               <p className="mt-3 text-base text-ink-secondary leading-relaxed">
                 The people who started RoreDevs and keep it moving.
@@ -181,9 +173,6 @@ export default function Team() {
             className="flex flex-col gap-10"
           >
             <motion.div variants={fadeUp()} className="max-w-xl">
-              <span className="badge bg-primary/10 text-primary border border-primary/20 mb-4">
-                Contributors
-              </span>
               <h2 className="text-display-md text-ink mt-3">Contributors</h2>
               <p className="mt-3 text-base text-ink-secondary leading-relaxed">
                 People who contribute to RoreDevs projects and the community.
@@ -228,9 +217,6 @@ export default function Team() {
             className="flex flex-col gap-10"
           >
             <motion.div variants={fadeUp()} className="max-w-xl">
-              <span className="badge bg-primary/10 text-primary border border-primary/20 mb-4">
-                Maintainers & Project Leads
-              </span>
               <h2 className="text-display-md text-ink mt-3">
                 Maintainers & Project Leads
               </h2>
