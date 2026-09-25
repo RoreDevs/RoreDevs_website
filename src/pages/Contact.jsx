@@ -28,26 +28,26 @@ const CHANNELS = [
   {
     icon: Mail,
     label: "Email",
-    value: "hello@novutech.tech",
-    href: "mailto:novutech.hq@gmail.com",
+    value: "hello@roredevs.tech",
+    href: "mailto:roredevs.hq@gmail.com",
   },
   {
     icon: Github,
     label: "GitHub",
     value: "github.com/RoreDevs",
-    href: "https://github.com/Rosieeee344/NovuTech_website",
+    href: "https://github.com/Rosieeee344/RoreDevs_website",
   },
   {
     icon: Twitter,
     label: "Twitter / X",
     value: "@roredevs",
-    href: "https://x.com/NovuTechHQ",
+    href: "https://x.com/RoreDevsHQ",
   },
   {
     icon: Linkedin,
     label: "LinkedIn",
     value: "RoreDevs",
-    href: "https://www.linkedin.com/company/novutech-hq",
+    href: "https://www.linkedin.com/company/roredevs-hq",
   },
 ];
 
