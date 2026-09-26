@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Hammer, Github, BookOpen, Users } from "lucide-react";
@@ -64,6 +65,14 @@ const PROJECTS = [
 
 // ── Component ──────────────────────────────────────────────────────────────
 export default function Home() {
+  useEffect(() => {
+    document.title = "RoreDevs | Student Developers Building in the Open";
+    const desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.setAttribute("content", "RoreDevs is a community of student developers who learn by building, share ideas, and open-source real projects together. Explore Acadex, Seemul, and more.");
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.setAttribute("href", "https://roredevs.tech/");
+  }, []);
+
   return (
     <div>
       {/* ════════════════════════════════════════════════════════════════

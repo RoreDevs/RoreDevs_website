@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Hammer, BookOpen, Rocket, Heart } from "lucide-react";
@@ -45,6 +46,14 @@ const APPROACH = [
 
 // ── Component ──────────────────────────────────────────────────────────────
 export default function About() {
+  useEffect(() => {
+    document.title = "About RoreDevs | Student Software Development Community";
+    const desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.setAttribute("content", "Meet RoreDevs, a student developer community building practical web applications and open-source projects in the open. Learn about our story, mission, and how we work.");
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.setAttribute("href", "https://roredevs.tech/about");
+  }, []);
+
   return (
     <div>
 

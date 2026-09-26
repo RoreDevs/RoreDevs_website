@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import TeamMemberCard from "../components/TeamMemberCard";
 import ericaImg from "../assets/Erica.jpg";
@@ -99,6 +100,14 @@ const MAINTAINERS = [];
 
 // ── Component ──────────────────────────────────────────────────────────────
 export default function Team() {
+  useEffect(() => {
+    document.title = "Team | RoreDevs — Meet the People Behind the Community";
+    const desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.setAttribute("content", "Meet the founders, contributors, and maintainers building RoreDevs — a student developer community creating open-source projects in the open.");
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.setAttribute("href", "https://roredevs.tech/team");
+  }, []);
+
   return (
     <div>
       {/* ════════════════════════════════════════════════════════════════

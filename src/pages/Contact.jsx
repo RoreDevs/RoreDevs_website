@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   Mail,
@@ -54,6 +54,14 @@ const CHANNELS = [
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [status, setStatus] = useState("idle"); // idle | sending | sent | error
+
+  useEffect(() => {
+    document.title = "Contact RoreDevs | Work With Us or Support the Community";
+    const desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.setAttribute("content", "Get in touch with RoreDevs. Whether you want to collaborate on a project, support the community, or just follow what we're building — reach out.");
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.setAttribute("href", "https://roredevs.tech/contact");
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
