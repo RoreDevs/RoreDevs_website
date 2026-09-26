@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import logo from '../assets/ROREDEVS.png';
 
 const NAV_LINKS = [
   { to: "/",         label: "Home"     },
   { to: "/about",    label: "About"    },
-  { to: "/team",     label: "Team"     },
   { to: "/projects", label: "Projects" },
+  { to: "/team",     label: "Team"     },
   { to: "/contact",  label: "Contact"  },
 ];
 
@@ -56,15 +57,14 @@ export default function Navbar() {
           to="/"
           className="flex items-center gap-2 text-ink no-underline hover:opacity-80 transition-opacity"
         >
-          {/* Simple geometric logo mark */}
-          <span
-            className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary text-white text-xs font-bold tracking-tight select-none"
-            aria-hidden="true"
-          >
-            N
-          </span>
+          {/* RoreDevs logo mark */}
+          <img
+            src={logo}
+            alt="RoreDevs logo"
+            className="h-7 w-7 rounded-lg object-cover"
+          />
           <span className="text-base font-semibold tracking-tight text-ink">
-            NovuTech
+            RoreDevs
           </span>
         </NavLink>
 

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   ExternalLink,
@@ -12,6 +13,7 @@ import {
   ArrowRight,
   Sparkles,
 } from "lucide-react";
+import logo from '../assets/ROREDEVS.png';
 
 // ── Animation helpers (mirrors Home.jsx pattern) ───────────────────────────
 const stagger = (delayChildren = 0.05, staggerChildren = 0.12) => ({
@@ -62,11 +64,21 @@ const PROJECTS = [
     featured: true,
   },
   {
-    name: "SkillSwap",
+    name: "Seemul Website",
     status: "In Development",
     statusColor: "warning",
     description:
-      "SkillSwap is a peer-to-peer learning platform that connects people who want to learn with those willing to teach. It aims to foster collaboration, mentorship, and knowledge sharing within communities.",
+      "Seemul Website is the web version of Seemul, a peer-to-peer learning platform that connects people who want to learn with those willing to teach. It aims to foster collaboration, mentorship, and knowledge sharing within communities.",
+    features: [],
+    liveUrl: null,
+    featured: false,
+  },
+  {
+    name: "Seemul Mobile App",
+    status: "In Development",
+    statusColor: "warning",
+    description:
+      "Seemul Mobile App is the mobile version of Seemul, bringing the same peer-to-peer learning experience to iOS and Android. It is part of the same Seemul ecosystem as the website, not a separate product.",
     features: [],
     liveUrl: null,
     featured: false,
@@ -75,6 +87,14 @@ const PROJECTS = [
 
 // ── Component ──────────────────────────────────────────────────────────────
 export default function Projects() {
+  useEffect(() => {
+    document.title = "Projects | RoreDevs — Acadex, Seemul & More";
+    const desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.setAttribute("content", "Explore RoreDevs projects including Acadex, a live academic management system, and Seemul, a peer-to-peer learning platform currently in development.");
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.setAttribute("href", "https://roredevs.tech/projects");
+  }, []);
+
   return (
     <div>
       {/* ════════════════════════════════════════════════════════════════
@@ -94,11 +114,6 @@ export default function Projects() {
             animate="show"
             className="flex flex-col items-center gap-6"
           >
-            <motion.div variants={fadeUp()}>
-              <span className="badge bg-primary/10 text-primary border border-primary/20">
-                What we build
-              </span>
-            </motion.div>
 
             <motion.h1
               variants={fadeUp()}
@@ -138,9 +153,6 @@ export default function Projects() {
           >
             {/* Section header */}
             <motion.div variants={fadeUp()} className="max-w-xl">
-              <span className="badge bg-primary/10 text-primary border border-primary/20 mb-4">
-                Featured project
-              </span>
               <h2 className="text-display-md text-ink mt-3">
                 {PROJECTS[0].name}
               </h2>
@@ -214,7 +226,7 @@ export default function Projects() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════
-          3. SKILLSWAP
+          3. SEEMUL (Website + Mobile App)
       ════════════════════════════════════════════════════════════════ */}
       <section className="section bg-surface-white">
         <div className="container-page">
@@ -227,43 +239,51 @@ export default function Projects() {
           >
             {/* Section header */}
             <motion.div variants={fadeUp()} className="max-w-xl">
-              <span className="badge bg-primary/10 text-primary border border-primary/20 mb-4">
-                In development
-              </span>
-              <h2 className="text-display-md text-ink mt-3">
-                {PROJECTS[1].name}
-              </h2>
+              <h2 className="text-display-md text-ink mt-3">Seemul</h2>
+              <p className="mt-3 text-base text-ink-secondary leading-relaxed">
+                Seemul is a peer-to-peer learning platform we're building as one
+                ecosystem, shipping in two forms: a website for the web and a
+                mobile app for iOS and Android.
+              </p>
             </motion.div>
 
-            {/* Project card */}
-            <motion.div
-              variants={fadeUp()}
-              initial="rest"
-              whileHover="hover"
-              animate="rest"
-            >
-              <motion.div
-                variants={cardHover}
-                className="card flex flex-col gap-6 transition-shadow duration-200"
-              >
-                <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                  <span className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1 rounded-full bg-warning-light text-warning border-0">
-                    <Clock size={14} />
-                    In Development
-                  </span>
-                </div>
+            {/* Project cards */}
+            <div className="flex flex-col gap-6">
+              {PROJECTS.slice(1).map((project) => (
+                <motion.div
+                  key={project.name}
+                  variants={fadeUp()}
+                  initial="rest"
+                  whileHover="hover"
+                  animate="rest"
+                >
+                  <motion.div
+                    variants={cardHover}
+                    className="card flex flex-col gap-6 transition-shadow duration-200"
+                  >
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                      <h3 className="text-lg font-semibold text-ink">
+                        {project.name}
+                      </h3>
+                      <span className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1 rounded-full bg-warning-light text-warning border-0">
+                        <Clock size={14} />
+                        In Development
+                      </span>
+                    </div>
 
-                <p className="text-base md:text-lg text-ink-secondary leading-relaxed max-w-3xl">
-                  {PROJECTS[1].description}
-                </p>
+                    <p className="text-base md:text-lg text-ink-secondary leading-relaxed max-w-3xl">
+                      {project.description}
+                    </p>
 
-                {/* Coming Soon indicator */}
-                <div className="flex items-center gap-2 text-ink-muted">
-                  <Sparkles size={16} />
-                  <span className="text-sm font-medium">Coming Soon</span>
-                </div>
-              </motion.div>
-            </motion.div>
+                    {/* Coming Soon indicator */}
+                    <div className="flex items-center gap-2 text-ink-muted">
+                      <Sparkles size={16} />
+                      <span className="text-sm font-medium">Coming Soon</span>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
@@ -280,13 +300,13 @@ export default function Projects() {
             viewport={{ once: true, margin: "-80px" }}
             className="max-w-2xl mx-auto text-center flex flex-col items-center gap-6"
           >
-            <motion.div
-              variants={fadeUp()}
-              aria-hidden="true"
-              className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-white text-xl font-bold select-none"
-            >
-              N
-            </motion.div>
+            <motion.img
+            src={logo}
+            alt="RoreDevs logo"
+            variants={fadeUp()}
+            aria-hidden="true"
+            className="h-12 w-12 rounded-2xl object-cover"
+            />
 
             <motion.h2 variants={fadeUp()} className="text-display-sm text-ink">
               More on the way
@@ -302,7 +322,7 @@ export default function Projects() {
 
             <motion.div variants={fadeUp()}>
               <a
-                href="https://github.com/Rosieeee344/NovuTech_website"
+                href="https://github.com/Rosieeee344/RoreDevs_website"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-ghost text-base px-7 py-3"

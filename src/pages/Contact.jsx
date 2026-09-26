@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   Mail,
@@ -10,6 +10,7 @@ import {
   CheckCircle2,
   Loader2,
 } from "lucide-react";
+import logo from '../assets/ROREDEVS.png';
 
 // ── Animation helpers (mirrors Home.jsx) ────────────────────────────────────
 const stagger = (delayChildren = 0.05, staggerChildren = 0.12) => ({
@@ -27,26 +28,26 @@ const CHANNELS = [
   {
     icon: Mail,
     label: "Email",
-    value: "hello@novutech.dev",
-    href: "mailto:rdwamena36#gmail.com",
+    value: "hello@roredevs.tech",
+    href: "mailto:roredevs.hq@gmail.com",
   },
   {
     icon: Github,
     label: "GitHub",
-    value: "github.com/novutech",
-    href: "https://github.com/Rosieeee344/NovuTech_website",
+    value: "github.com/RoreDevs",
+    href: "https://github.com/Rosieeee344/RoreDevs_website",
   },
   {
     icon: Twitter,
     label: "Twitter / X",
-    value: "@novutech",
-    href: "https://x.com/dwamen1dwamena?s=11",
+    value: "@roredevs",
+    href: "https://x.com/RoreDevsHQ",
   },
   {
     icon: Linkedin,
     label: "LinkedIn",
-    value: "NovuTech",
-    href: "https://www.linkedin.com/in/rosemary-boahemaa-dwamena-80b3a03b7?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+    value: "RoreDevs",
+    href: "https://www.linkedin.com/company/roredevs-hq",
   },
 ];
 
@@ -54,26 +55,41 @@ export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [status, setStatus] = useState("idle"); // idle | sending | sent | error
 
+  useEffect(() => {
+    document.title = "Contact RoreDevs | Work With Us or Support the Community";
+    const desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.setAttribute("content", "Get in touch with RoreDevs. Whether you want to collaborate on a project, support the community, or just follow what we're building — reach out.");
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.setAttribute("href", "https://roredevs.tech/contact");
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus("sending");
+  e.preventDefault();
+  setStatus("sending");
 
-    try {
-      // TODO: wire this up to your backend / email service (e.g. Formspree,
-      // EmailJS, or your own API route). This is just a stub so the UI
-      // has somewhere to go.
-      await new Promise((resolve) => setTimeout(resolve, 900));
-      setStatus("sent");
-      setForm({ name: "", email: "", subject: "", message: "" });
-    } catch (err) {
-      setStatus("error");
+  try {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to send message");
     }
-  };
+
+    setStatus("sent");
+    setForm({ name: "", email: "", subject: "", message: "" });
+  } catch (err) {
+    console.error(err);
+    setStatus("error");
+  }
+};
 
   return (
     <div>
@@ -94,27 +110,21 @@ export default function Contact() {
             animate="show"
             className="flex flex-col items-center gap-6"
           >
-            <motion.div variants={fadeUp()}>
-              <span className="badge bg-primary/10 text-primary border border-primary/20">
-                Let's talk
-              </span>
-            </motion.div>
-
             <motion.h1
               variants={fadeUp()}
               className="text-display-xl md:text-display-2xl text-ink max-w-2xl"
             >
-              Got an idea?{" "}
-              <span className="text-primary">We're listening.</span>
+              Support, collaborate,{" "}
+              <span className="text-primary">or work with us.</span>
             </motion.h1>
 
             <motion.p
               variants={fadeUp()}
               className="text-lg md:text-xl text-ink-secondary max-w-xl leading-relaxed"
             >
-              Collaboration, feedback, or just a friendly hello, drop us a
-              line and we'll get back to you (usually before our coffee gets
-              cold).
+              RoreDevs is a community of students building in the open. If you
+              want to support what we're doing, collaborate on a project,
+              contribute resources, or just follow along, drop us a line.
             </motion.p>
           </motion.div>
         </div>

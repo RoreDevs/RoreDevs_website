@@ -6,7 +6,7 @@ export default {
   ],
   theme: {
     extend: {
-      // ── NovuTech Color Palette ──────────────────────────────────────
+      // ── RoreDevs Color Palette ──────────────────────────────────────
       colors: {
         primary: {
           DEFAULT: "#78350F",
