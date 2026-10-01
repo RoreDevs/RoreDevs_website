@@ -25,7 +25,7 @@ const FOUNDERS = [
     name: "Rosemary Boahemaa Dwamena",
     initials: "RBD",
     role: "Team Lead & Developer",
-    bio: "99 little bugs in the code...",
+    bio: "A little bit of everything...",
     socials: {
       Facebook: "https://www.facebook.com/share/18xA92qCCi/?mibextid=wwXIfr",
       Instagram: "https://www.instagram.com/_rosemaryboahemaa",
