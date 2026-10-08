@@ -24,7 +24,7 @@ const FOUNDERS = [
     image: rosemaryImg,
     name: "Rosemary Boahemaa Dwamena",
     initials: "RBD",
-    role: "Team Lead & Developer",
+    role: "Founder, Team Lead & Developer",
     bio: "A little bit of everything...",
     socials: {
       Facebook: "https://www.facebook.com/share/18xA92qCCi/?mibextid=wwXIfr",
@@ -38,7 +38,7 @@ const FOUNDERS = [
     image: ericaImg,
     name: "Erica Dansowaa",
     initials: "ED",
-    role: "Frontend Developer & Documentation Lead",
+    role: "Co-founder, Frontend Developer & Documentation Lead",
     bio: "My code works. Don't ask why....",
     socials: {
       Facebook: "https://www.facebook.com/share/1J2amxJsQE/",
@@ -52,7 +52,7 @@ const FOUNDERS = [
     image: raymondImg,
     name: "Raymond Selorm Tormeti",
     initials: "RST",
-    role: "Design Lead & Developer",
+    role: "Co-founder, Design Lead & Developer",
     bio: "error 404 : bio not found",
     socials: {
       Facebook: "https://www.facebook.com/share/1DNTLhBzZ2/",
@@ -66,7 +66,7 @@ const FOUNDERS = [
     image: obedImg,
     name: "Obed Yakpa",
     initials: "OY",
-    role: "Backend Lead & Developer",
+    role: "Co-founder, Backend Lead & Developer",
     bio: "I just build.",
     socials: {
       Facebook: "https://www.facebook.com/share/194HBTYmC4/",
@@ -83,15 +83,8 @@ const CONTRIBUTORS = [
     image: kobbyImg,
     name: "Godfred Eduful",
     initials: "GE",
-    role: "A Contributor to Acadex KTU",
+    role: "A code contributor to Acadex KTU",
     bio: "Bring work",
-    socials: {
-      Facebook: "https://m.facebook.com/godfred.eduful.319/",
-      Instagram: "https://www.instagram.com/_kobby_pounds/",
-      Twitter: "https://x.com/_kobby_pounds",
-      Linkedin: "https://www.linkedin.com/in/godfred-eduful-743b2b350",
-      Github: "https://github.com/geduful",
-    },
   },
 ];
 

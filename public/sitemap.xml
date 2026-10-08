@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://novu-tech-website.vercel.app/</loc>
+        <loc>https://roredevs.tech/</loc>
     </url>
     <url>
-        <loc>https://novu-tech-website.vercel.app/about</loc>
+        <loc>https://roredevs.tech/about</loc>
     </url>
     <url>
-        <loc>https://novu-tech-website.vercel.app/team</loc>
+        <loc>https://roredevs.tech/team</loc>
     </url>
     <url>
-        <loc>https://novu-tech-website.vercel.app/projects</loc>
+        <loc>https://roredevs.tech/projects</loc>
     </url>
     <url>
-        <loc>https://novu-tech-website.vercel.app/contact</loc>
+        <loc>https://roredevs.tech/contact</loc>
     </url>
 </urlset>
