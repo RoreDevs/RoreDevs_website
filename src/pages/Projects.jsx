@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   ExternalLink,
@@ -86,6 +87,14 @@ const PROJECTS = [
 
 // ── Component ──────────────────────────────────────────────────────────────
 export default function Projects() {
+  useEffect(() => {
+    document.title = "Projects | RoreDevs — Acadex, Seemul & More";
+    const desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.setAttribute("content", "Explore RoreDevs projects including Acadex, a live academic management system, and Seemul, a peer-to-peer learning platform currently in development.");
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.setAttribute("href", "https://roredevs.tech/projects");
+  }, []);
+
   return (
     <div>
       {/* ════════════════════════════════════════════════════════════════

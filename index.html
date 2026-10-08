@@ -2,115 +2,56 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    
+
+    <!-- Favicons -->
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    
+
+    <!-- Viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Search Console verification -->
     <meta name="google-site-verification" content="01xRPzCL_P4ybv9fmKQlLIn6v8O9IDcAMOX0K-2NjV8" />
+    <meta name="google-site-verification" content="U0x9ViKzNH61FxxbFN9aO3b_yaoDkqkiBL40joECR5Q" />
 
-    <!-- EDIT: founder & co-founder names (and roles/links) below -->
-    <meta
-      name="description"
-      content="RoreDevs is a software development team founded by Rosemary Boahemaa Dwamena, with co-founders Erica Dansowaa, Raymond Selorm Tormeti, and Obed Yakpa. We build custom web applications, educational platforms, and digital products."
-    />
-    <meta
-      name="author"
-      content="Rosemary Boahemaa Dwamena, Erica Dansowaa, Raymond Selorm Tormeti, Obed Yakpa"
-    />
-    <meta
-      name="keywords"
-      content="RoreDevs founder, Rosemary Boahemaa Dwamena, RoreDevs co-founders, Erica Dansowaa, Raymond Selorm Tormeti, Obed Yakpa, software development team, web application development"
-    />
+    <!-- Default SEO — overridden per-page via useEffect -->
+    <title>RoreDevs | Student Developers Building in the Open</title>
+    <meta name="description" content="RoreDevs is a community of student developers who learn by building, share ideas, and open-source real projects together. Explore Acadex, Seemul, and more." />
 
-    <title>RoreDevs</title>
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://roredevs.tech/" />
+    <meta property="og:title" content="RoreDevs | Student Developers Building in the Open" />
+    <meta property="og:description" content="RoreDevs is a community of student developers who learn by building, share ideas, and open-source real projects together." />
+    <meta property="og:image" content="https://roredevs.tech/android-chrome-512x512.png" />
+    <meta property="og:site_name" content="RoreDevs" />
 
-    <!--
-      Structured data for entity disambiguation.
-      EDIT: replace "novu-tech-website.vercel.app" with the live RoreDevs domain
-      if it changes. Each Person's "sameAs" links tie a name to its official
-      social profiles so search engines match the correct identity.
-    -->
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@RoreDevsHQ" />
+    <meta name="twitter:title" content="RoreDevs | Student Developers Building in the Open" />
+    <meta name="twitter:description" content="RoreDevs is a community of student developers who learn by building, share ideas, and open-source real projects together." />
+    <meta name="twitter:image" content="https://roredevs.tech/android-chrome-512x512.png" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://roredevs.tech/" />
+
+    <!-- Structured Data — Organisation -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Organization",
-          "@id": "https://roredevs.tech/#organization",
-          "name": "RoreDevs",
-          "url": "https://roredevs.tech/",
-          "sameAs": [
-            "https://github.com/RoreDevs",
-            "https://x.com/RoreDevsHQ",
-            "https://www.linkedin.com/company/roredevs-hq"
-          ],
-          "founder": [
-            { "@id": "https://roredevs.tech/#person-rosemary-boahemaa-dwamena" },
-            { "@id": "https://roredevs.tech/#person-erica-dansowaa" },
-            { "@id": "https://roredevs.tech/#person-raymond-selorm-tormeti" },
-            { "@id": "https://roredevs.tech/#person-obed-yakpa" }
-          ]
-        },
-        {
-          "@type": "Person",
-          "@id": "https://roredevs.tech/#person-rosemary-boahemaa-dwamena",
-          "name": "Rosemary Boahemaa Dwamena",
-          "jobTitle": "Founder, Team Lead & Developer",
-          "worksFor": { "@id": "https://roredevs.tech/#organization" },
-          "sameAs": [
-            "https://www.facebook.com/share/18xA92qCCi/?mibextid=wwXIfr",
-            "https://www.instagram.com/_rosemaryboahemaa",
-            "https://x.com/dwamen1dwamena?s=11",
-            "https://www.linkedin.com/in/rosemaryboahemaa",
-            "https://github.com/Rosieeee344"
-          ]
-        },
-        {
-          "@type": "Person",
-          "@id": "https://roredevs.tech/#person-erica-dansowaa",
-          "name": "Erica Dansowaa",
-          "jobTitle": "Co-Founder, Frontend Developer & Documentation Lead",
-          "worksFor": { "@id": "https://roredevs.tech/#organization" },
-          "sameAs": [
-            "https://www.facebook.com/share/1J2amxJsQE/",
-            "https://www.instagram.com/doitlikericka",
-            "https://x.com/Dansowaa28",
-            "https://www.linkedin.com/in/erica-dansowaa-007047400",
-            "https://github.com/dansowaaerica28"
-          ]
-        },
-        {
-          "@type": "Person",
-          "@id": "https://roredevs.tech/#person-raymond-selorm-tormeti",
-          "name": "Raymond Selorm Tormeti",
-          "jobTitle": "Co-Founder, Design Lead & Developer",
-          "worksFor": { "@id": "https://roredevs.tech/#organization" },
-          "sameAs": [
-            "https://www.facebook.com/share/1DNTLhBzZ2/",
-            "https://www.instagram.com/raymond_notch",
-            "https://x.com/raymomd06",
-            "https://www.linkedin.com/in/raymond-tormeti",
-            "https://github.com/raymondnotch-sketch"
-          ]
-        },
-        {
-          "@type": "Person",
-          "@id": "https://roredevs.tech/#person-obed-yakpa",
-          "name": "Obed Yakpa",
-          "jobTitle": "Co-Founder, Backend Lead & Developer",
-          "worksFor": { "@id": "https://roredevs.tech/#organization" },
-          "sameAs": [
-            "https://www.facebook.com/share/194HBTYmC4/",
-            "https://www.instagram.com/mr.yakpa90",
-            "https://x.com/mr_yakpa90",
-            "https://www.linkedin.com/in/obed-yakpa-20aa39374",
-            "https://github.com/obedyakpa0-dev"
-          ]
-        }
+      "@type": "Organization",
+      "name": "RoreDevs",
+      "url": "https://roredevs.tech",
+      "logo": "https://roredevs.tech/android-chrome-512x512.png",
+      "email": "hello@roredevs.tech",
+      "sameAs": [
+        "https://github.com/RoreDevs",
+        "https://x.com/RoreDevsHQ",
+        "https://www.linkedin.com/company/roredevs-hq"
       ]
     }
     </script>
