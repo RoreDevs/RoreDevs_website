@@ -5,7 +5,7 @@ import About      from "./pages/About";
 import Team       from "./pages/Team";
 import Projects   from "./pages/Projects";
 import Contact    from "./pages/Contact";
-import logo from './assets/ROREDEVS.png';
+import NotFound   from "./pages/NotFound";
 
 export default function App() {
   return (
@@ -17,6 +17,8 @@ export default function App() {
         <Route path="team"     element={<Team />}     />
         <Route path="projects" element={<Projects />} />
         <Route path="contact"  element={<Contact />}  />
+        {/* Unknown paths previously rendered a blank page */}
+        <Route path="*"        element={<NotFound />} />
       </Route>
     </Routes>
   );

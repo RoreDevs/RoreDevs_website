@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { Github, Twitter, Linkedin } from "lucide-react";
-import logo from '../assets/ROREDEVS.png';
+import mark from "../assets/roredevs-mark.png";
 
 const NAV_LINKS = [
   { to: "/",         label: "Home"     },
@@ -10,7 +10,6 @@ const NAV_LINKS = [
   { to: "/contact",  label: "Contact"  },
 ];
 
-// Placeholder socials — swap hrefs for real URLs later
 const SOCIALS = [
   { icon: Github,   label: "GitHub",   href: "https://github.com/RoreDevs" },
   { icon: Twitter,  label: "Twitter",  href: "https://x.com/RoreDevsHQ" },
@@ -22,36 +21,34 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-border bg-surface-soft">
-      <div className="container-page py-12 md:py-16">
-
-        {/* ── Top row: brand + nav columns ───────────────────────── */}
-        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
-
-          {/* Brand block */}
-          <div className="flex flex-col gap-3 max-w-xs">
-            <div className="flex items-center gap-2">
+      <div className="container-page py-14 md:py-16">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
+          {/* Brand */}
+          <div className="md:col-span-6 lg:col-span-5">
+            <div className="flex items-center gap-2.5">
               <img
-              src={logo}
-              alt="RoreDevs logo"
-              className="h-7 w-7 rounded-lg object-cover"
-/>
-              <span className="text-base font-semibold text-ink">RoreDevs</span>
+                src={mark}
+                alt=""
+                aria-hidden="true"
+                width="28"
+                height="28"
+                className="h-7 w-7 object-contain"
+              />
+              <span className="text-[15px] font-semibold text-ink">RoreDevs</span>
             </div>
-            <p className="text-sm text-ink-muted leading-relaxed">
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-secondary">
               A community of student developers learning, building, and
               open-sourcing together.
             </p>
-            <p className="text-xs text-ink-muted leading-relaxed">
+            <p className="mt-2 max-w-sm text-sm leading-relaxed text-ink-muted">
               Building real projects in the open — one commit at a time.
             </p>
           </div>
 
-          {/* Quick links */}
-          <div className="flex flex-col gap-3">
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-ink-muted">
-              Pages
-            </h3>
-            <ul className="flex flex-col gap-2" role="list">
+          {/* Pages */}
+          <nav aria-label="Footer" className="md:col-span-3 lg:col-span-4">
+            <h2 className="eyebrow">Pages</h2>
+            <ul className="mt-4 flex flex-col gap-2.5">
               {NAV_LINKS.map(({ to, label }) => (
                 <li key={to}>
                   <NavLink
@@ -59,9 +56,9 @@ export default function Footer() {
                     end={to === "/"}
                     className={({ isActive }) =>
                       [
-                        "text-sm transition-colors duration-150",
+                        "inline-block py-0.5 text-sm transition-colors duration-150",
                         isActive
-                          ? "text-primary font-medium"
+                          ? "font-medium text-primary"
                           : "text-ink-secondary hover:text-ink",
                       ].join(" ")
                     }
@@ -71,23 +68,21 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          {/* Social links */}
-          <div className="flex flex-col gap-3">
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-ink-muted">
-              Connect
-            </h3>
-            <ul className="flex flex-col gap-2" role="list">
+          {/* Social */}
+          <div className="md:col-span-3">
+            <h2 className="eyebrow">Connect</h2>
+            <ul className="mt-4 flex flex-col gap-2.5">
               {SOCIALS.map(({ icon: Icon, label, href }) => (
                 <li key={label}>
                   <a
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm text-ink-secondary hover:text-ink transition-colors duration-150"
+                    className="inline-flex items-center gap-2 py-0.5 text-sm text-ink-secondary transition-colors duration-150 hover:text-ink"
                   >
-                    <Icon size={14} className="shrink-0" />
+                    <Icon size={14} className="shrink-0" aria-hidden="true" />
                     {label}
                   </a>
                 </li>
@@ -96,16 +91,14 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* ── Bottom row: copyright ───────────────────────────────── */}
-        <div className="mt-10 pt-6 border-t border-border flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-ink-muted">
-            © {year} RoreDevs. All rights reserved.
+        <div className="mt-12 flex flex-col gap-1.5 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <p className="font-mono text-[11px] uppercase tracking-[0.08em] text-ink-muted">
+            © {year} RoreDevs
           </p>
           <p className="text-xs text-ink-muted">
             Built by Rosie, Erica, Obed &amp; Raymond.
           </p>
         </div>
-
       </div>
     </footer>
   );

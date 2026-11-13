@@ -6,87 +6,97 @@ export default {
   ],
   theme: {
     extend: {
-      // ── RoreDevs Color Palette ──────────────────────────────────────
+      // ── Colour system ───────────────────────────────────────────────
+      // Warm "ember" identity. The whole primary scale is generated at the
+      // brand hue (27.7°) so every step shares the same hue family — the
+      // previous scale was Tailwind orange, which changed hue mid-ramp.
       colors: {
         primary: {
-          DEFAULT: "#78350F",
-          50:  "#FFF7ED",
-          100: "#FFEDD5",
-          200: "#FED7AA",
-          300: "#FDBA74",
-          400: "#FB923C",
-          500: "#F97316",
-          600: "#EA580C",
-          700: "#C2410C",
-          800: "#9A3412",
-          900: "#78350F",
-          950: "#431407",
+          DEFAULT: "#78350F", // brand — unchanged
+          50:  "#FAF6F1",
+          100: "#F4E9DE",
+          200: "#E9D5C2",
+          300: "#D8B79B",
+          400: "#C2926C",
+          500: "#A9724A",
+          600: "#8D5731",
+          700: "#78350F", // brand sits at 700 so the ramp is monotonic
+          800: "#612C0E",
+          900: "#4B220B",
+          950: "#251105",
         },
-        success: {
-          DEFAULT: "#16A34A",
-          light: "#DCFCE7",
-        },
-        warning: {
-          DEFAULT: "#D97706",
-          light: "#FEF3C7",
-        },
-        danger: {
-          DEFAULT: "#DC2626",
-          light: "#FEE2E2",
-        },
-        // Backgrounds
+
+        // Warm neutrals
         surface: {
           white: "#FFFFFF",
-          soft:  "#F8FAFC",
-          muted: "#F1F5F9",
+          bone:  "#FAF8F5",
+          soft:  "#F4EFE9",
+          muted: "#EFE8E0",
+          inverse: "#1A1614",
         },
+
         // Text
         ink: {
-          DEFAULT: "#0F172A",
-          secondary: "#334155",
-          muted: "#64748B",
+          DEFAULT:   "#1A1614", // warm near-black
+          secondary: "#4A423C",
+          muted:     "#6E645C",
+          inverse:   "#FAF8F5",
         },
+
         // Borders
         border: {
-          DEFAULT: "#E2E8F0",
+          DEFAULT: "#E7DFD6",
+          strong:  "#D3C7BA",
+          input:   "#9C8D7E", // ≥3:1 against white (WCAG 1.4.11)
         },
+
+        // Status — text colours verified ≥4.5:1 on their tints
+        success: { DEFAULT: "#146C34", light: "#E7F4EB" },
+        warning: { DEFAULT: "#92400E", light: "#FEF3C7" },
+        danger:  { DEFAULT: "#B42318", light: "#FEF3F2" },
       },
 
-      // ── Typography ─────────────────────────────────────────────────
+      // ── Typography ──────────────────────────────────────────────────
       fontFamily: {
         sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+        mono: ["ui-monospace", "SFMono-Regular", "Menlo", "Consolas", "monospace"],
       },
       fontSize: {
-        // Large confident headings
-        "display-2xl": ["4.5rem",  { lineHeight: "1.1",  letterSpacing: "-0.02em", fontWeight: "700" }],
-        "display-xl":  ["3.75rem", { lineHeight: "1.1",  letterSpacing: "-0.02em", fontWeight: "700" }],
-        "display-lg":  ["3rem",    { lineHeight: "1.15", letterSpacing: "-0.015em", fontWeight: "700" }],
-        "display-md":  ["2.25rem", { lineHeight: "1.2",  letterSpacing: "-0.01em",  fontWeight: "600" }],
-        "display-sm":  ["1.875rem",{ lineHeight: "1.3",  letterSpacing: "-0.01em",  fontWeight: "600" }],
+        // Fluid display scale — solves 320px overflow and oversized mobile
+        // headings without arbitrary fixed widths.
+        "display-2xl": ["clamp(2.5rem, 6.2vw, 4.25rem)",   { lineHeight: "1.04", letterSpacing: "-0.028em", fontWeight: "700" }],
+        "display-xl":  ["clamp(2.125rem, 4.6vw, 3.25rem)", { lineHeight: "1.08", letterSpacing: "-0.024em", fontWeight: "700" }],
+        "display-lg":  ["clamp(1.875rem, 3.6vw, 2.5rem)",  { lineHeight: "1.12", letterSpacing: "-0.02em",  fontWeight: "600" }],
+        "display-md":  ["clamp(1.625rem, 2.6vw, 2.125rem)",{ lineHeight: "1.18", letterSpacing: "-0.018em", fontWeight: "600" }],
+        "display-sm":  ["clamp(1.375rem, 2vw, 1.75rem)",   { lineHeight: "1.28", letterSpacing: "-0.012em", fontWeight: "600" }],
       },
 
-      // ── Border Radius ───────────────────────────────────────────────
-      // rounded-2xl (16px) is the default for cards; 12px for smaller elements
+      // ── Radius — slightly tighter than before, borders carry the depth ──
       borderRadius: {
-        DEFAULT: "0.75rem",   // 12px — default for inputs, badges
-        xl:  "0.75rem",
-        "2xl": "1rem",        // 16px — cards (primary radius)
-        "3xl": "1.5rem",
+        DEFAULT: "0.625rem",
+        lg: "0.625rem",
+        xl: "0.75rem",
+        "2xl": "1rem",
+        "3xl": "1.25rem",
       },
 
-      // ── Box Shadows (soft, minimal) ─────────────────────────────────
+      // ── Elevation — reserved for genuinely raised surfaces ──────────
       boxShadow: {
-        soft: "0 1px 3px 0 rgb(0 0 0 / 0.04), 0 1px 2px -1px rgb(0 0 0 / 0.04)",
-        card: "0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05)",
-        elevated: "0 10px 15px -3px rgb(0 0 0 / 0.06), 0 4px 6px -4px rgb(0 0 0 / 0.06)",
+        soft:     "0 1px 2px 0 rgb(26 22 20 / 0.04)",
+        card:     "0 1px 2px 0 rgb(26 22 20 / 0.04), 0 8px 24px -16px rgb(26 22 20 / 0.18)",
+        elevated: "0 24px 48px -24px rgb(26 22 20 / 0.28)",
       },
 
-      // ── Spacing — generous whitespace ───────────────────────────────
+      maxWidth: {
+        content: "72rem", // 1152px, scales to 1280 at xl
+        prose:   "40rem",
+      },
       spacing: {
         18: "4.5rem",
         22: "5.5rem",
-        26: "6.5rem",
-        30: "7.5rem",
+      },
+      transitionTimingFunction: {
+        editorial: "cubic-bezier(0.22, 1, 0.36, 1)",
       },
     },
   },
