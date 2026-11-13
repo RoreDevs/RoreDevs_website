@@ -1,27 +1,8 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { ArrowRight, Hammer, Github, BookOpen, Users } from "lucide-react";
-import logo from '../assets/ROREDEVS.png';
-
-// ── Animation helpers ──────────────────────────────────────────────────────
-// Staggered parent container
-const stagger = (delayChildren = 0.05, staggerChildren = 0.12) => ({
-  hidden: {},
-  show: { transition: { delayChildren, staggerChildren } },
-});
-
-// Individual child variant — fade + subtle upward slide
-const fadeUp = (delay = 0) => ({
-  hidden: { opacity: 0, y: 18 },
-  show:   { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut", delay } },
-});
-
-// Hover lift for cards
-const cardHover = {
-  rest: { y: 0,  boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05)" },
-  hover: { y: -4, boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.06)" },
-};
+import { ArrowRight, Hammer, Github, BookOpen, Users, ExternalLink } from "lucide-react";
+import StatusPill from "../components/StatusPill";
+import CtaPanel from "../components/CtaPanel";
 
 // ── Community values ───────────────────────────────────────────────────────
 const VALUES = [
@@ -48,27 +29,23 @@ const VALUES = [
 ];
 
 // ── Project teaser data ────────────────────────────────────────────────────
+// Seemul Website is the only collaborative RoreDevs project.
 const PROJECTS = [
   {
     name: "Seemul Website",
+    kind: "Web",
     blurb: "The web version of Seemul, a peer-to-peer learning platform.",
-  },
-  {
-    name: "Seemul Mobile App",
-    blurb: "The mobile version of Seemul, built for iOS and Android.",
-  },
-  {
-    name: "Acadex",
-    blurb: "An academic management platform for attendance, slides, and assignments.",
+    status: "Live",
+    tone: "live",
+    liveUrl: "https://seemul-website.vercel.app/",
   },
 ];
 
-// ── Component ──────────────────────────────────────────────────────────────
 export default function Home() {
   useEffect(() => {
     document.title = "RoreDevs | Student Developers Building in the Open";
     const desc = document.querySelector('meta[name="description"]');
-    if (desc) desc.setAttribute("content", "RoreDevs is a community of student developers who learn by building, share ideas, and open-source real projects together. Explore Acadex, Seemul, and more.");
+    if (desc) desc.setAttribute("content", "RoreDevs is a community of student developers who learn by building, share ideas, and open-source real projects together. Explore the Seemul Website, our live peer-to-peer learning platform.");
     const canonical = document.querySelector('link[rel="canonical"]');
     if (canonical) canonical.setAttribute("href", "https://roredevs.tech/");
   }, []);
@@ -76,218 +53,192 @@ export default function Home() {
   return (
     <div>
       {/* ════════════════════════════════════════════════════════════════
-          1. HERO
+          1. HERO — asymmetric: statement left, current work right
       ════════════════════════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden bg-surface-white">
-        {/* Decorative background grain / gradient blob */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[600px]
-                     rounded-full bg-primary/5 blur-3xl"
-        />
+      <section className="border-b border-border bg-surface-bone">
+        <div className="container-page grid grid-cols-1 gap-10 pb-14 pt-10 sm:pt-14 lg:grid-cols-12 lg:gap-14 lg:pb-24 lg:pt-20">
+          {/* Statement */}
+          <div className="min-w-0 lg:col-span-7">
+            <p className="eyebrow flex items-center gap-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
+              Student developers · Open source
+            </p>
 
-        <div className="container-page relative z-10 pt-24 pb-20 md:pt-32 md:pb-28 text-center">
-          <motion.div
-            variants={stagger(0.1, 0.14)}
-            initial="hidden"
-            animate="show"
-            className="flex flex-col items-center gap-7"
-          >
-            {/* Main heading */}
-            <motion.h1
-              variants={fadeUp()}
-              className="text-display-xl md:text-display-2xl text-ink max-w-3xl"
-            >
+            <h1 className="mt-6 text-display-2xl text-ink">
               Learning by building.{" "}
               <span className="text-primary">Shipping in the open.</span>{" "}
               Growing together.
-            </motion.h1>
+            </h1>
 
-            {/* Sub-line */}
-            <motion.p
-              variants={fadeUp()}
-              className="text-lg md:text-xl text-ink-secondary max-w-2xl leading-relaxed"
-            >
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-secondary">
               RoreDevs is a community of student developers who learn by
               building, share ideas, and open-source real projects together.
-            </motion.p>
+            </p>
 
-            {/* CTA buttons */}
-            <motion.div
-              variants={fadeUp()}
-              className="flex flex-col sm:flex-row items-center gap-3 mt-2"
-            >
-              <Link to="/projects" className="btn-primary text-base px-6 py-3">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <Link to="/projects" className="btn-primary btn-lg">
                 View Projects
-                <ArrowRight size={16} />
+                <ArrowRight size={16} aria-hidden="true" />
               </Link>
-              <Link to="/about" className="btn-ghost text-base px-6 py-3">
+              <Link to="/about" className="btn-ghost btn-lg">
                 About the Community
               </Link>
-            </motion.div>
-          </motion.div>
-        </div>
+            </div>
+          </div>
 
-        {/* Bottom border fade */}
-        <div
-          aria-hidden="true"
-          className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-border to-transparent"
-        />
+          {/* Current work index — evidence rather than decoration */}
+          <aside className="min-w-0 lg:col-span-5 lg:self-center">
+            <div className="overflow-hidden rounded-xl border border-border bg-surface-white">
+              <div className="flex items-center justify-between border-b border-border px-5 py-3">
+                <span className="eyebrow">Current work</span>
+                <span className="font-mono text-[11px] text-ink-muted">
+                  01 project
+                </span>
+              </div>
+
+              <ul>
+                {PROJECTS.map((project) => (
+                  <li
+                    key={project.name}
+                    className="flex items-center justify-between gap-4 border-b border-border px-5 py-3.5 last:border-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate text-sm font-medium text-ink">
+                        {project.name}
+                      </p>
+                      <p className="mt-0.5 font-mono text-[11px] text-ink-muted">
+                        {project.kind}
+                      </p>
+                    </div>
+                    <StatusPill tone={project.tone}>{project.status}</StatusPill>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="border-t border-border bg-surface-bone px-5 py-3">
+                <Link
+                  to="/projects"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-primary-800"
+                >
+                  All projects
+                  <ArrowRight size={14} aria-hidden="true" />
+                </Link>
+              </div>
+            </div>
+          </aside>
+        </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════════════
-          2. COMMUNITY VALUES
+          2. WHAT WE'RE ABOUT
       ════════════════════════════════════════════════════════════════ */}
-      <section className="section bg-surface-soft">
-        <div className="container-page">
-          <motion.div
-            variants={stagger()}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-            className="flex flex-col items-center gap-12"
-          >
-            {/* Section header */}
-            <motion.div variants={fadeUp()} className="text-center max-w-2xl">
-              <h2 className="text-display-md text-ink">What we're about</h2>
-              <p className="mt-3 text-base text-ink-secondary leading-relaxed">
-                RoreDevs is a place for student developers to learn by building
-                real projects, explore technology together, and contribute to
-                open source.
-              </p>
-            </motion.div>
+      <section className="section border-b border-border bg-surface-white">
+        <div className="container-page grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
+          <div className="min-w-0 lg:col-span-4">
+            <p className="eyebrow">01 — The community</p>
+            <h2 className="mt-4 text-display-md text-ink">What we're about</h2>
+            <p className="mt-4 max-w-md text-base leading-relaxed text-ink-secondary">
+              RoreDevs is a place for student developers to learn by building
+              real projects, explore technology together, and contribute to
+              open source.
+            </p>
+          </div>
 
-            {/* Values cards */}
-            <motion.div
-              variants={stagger(0, 0.1)}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full"
-            >
-              {VALUES.map(({ icon: Icon, title, body }) => (
-                <motion.div
-                  key={title}
-                  variants={fadeUp()}
-                  initial="rest"
-                  whileHover="hover"
-                  animate="rest"
-                >
-                  <motion.div
-                    variants={cardHover}
-                    className="card h-full flex flex-col gap-4 transition-shadow duration-200"
-                  >
-                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary shrink-0">
-                      <Icon size={20} />
-                    </span>
-                    <div className="flex flex-col gap-2">
-                      <h3 className="text-base font-semibold text-ink">{title}</h3>
-                      <p className="text-sm text-ink-secondary leading-relaxed">{body}</p>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
+          <ol className="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2 lg:col-span-8">
+            {VALUES.map(({ icon: Icon, title, body }, index) => (
+              <li key={title} className="bg-surface-white p-6 sm:p-8">
+                <div className="flex items-center gap-3">
+                  <span className="font-mono text-[11px] text-primary">
+                    0{index + 1}
+                  </span>
+                  <Icon size={16} className="text-primary" aria-hidden="true" />
+                </div>
+                <h3 className="mt-4 text-base font-semibold text-ink">{title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-secondary">
+                  {body}
+                </p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════════════
           3. PROJECTS TEASER
       ════════════════════════════════════════════════════════════════ */}
-      <section className="section bg-surface-white">
-        <div className="container-page">
-          <motion.div
-            variants={stagger()}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-            className="flex flex-col gap-10"
-          >
-            {/* Section header */}
-            <motion.div variants={fadeUp()} className="max-w-xl">
-              <h2 className="text-display-md text-ink mt-3">
-                Real projects, built in public
-              </h2>
-              <p className="mt-3 text-base text-ink-secondary leading-relaxed">
-                We work on real projects as a community. Here are a few of the
-                things we're currently building.
-              </p>
-            </motion.div>
-
-            {/* Project teaser cards */}
-            <motion.div
-              variants={stagger(0, 0.1)}
-              className="grid grid-cols-1 md:grid-cols-3 gap-5"
+      <section className="section border-b border-border bg-surface-bone">
+        <div className="container-page grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
+          <div className="min-w-0 lg:col-span-4">
+            <p className="eyebrow">02 — Selected work</p>
+            <h2 className="mt-4 text-display-md text-ink">
+              Real projects, built in public
+            </h2>
+            <p className="mt-4 max-w-md text-base leading-relaxed text-ink-secondary">
+              We work on real projects as a community. Here's what we're
+              building right now.
+            </p>
+            <Link
+              to="/projects"
+              className="group mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-primary-800"
             >
-              {PROJECTS.map(({ name, blurb }) => (
-                <motion.div
-                  key={name}
-                  variants={fadeUp()}
-                  initial="rest"
-                  whileHover="hover"
-                  animate="rest"
-                >
-                  <motion.div
-                    variants={cardHover}
-                    className="card h-full flex flex-col gap-3 transition-shadow duration-200"
-                  >
-                    <h3 className="text-base font-semibold text-ink">{name}</h3>
-                    <p className="text-sm text-ink-secondary leading-relaxed">{blurb}</p>
-                  </motion.div>
-                </motion.div>
-              ))}
-            </motion.div>
+              View all projects
+              <ArrowRight
+                size={15}
+                aria-hidden="true"
+                className="transition-transform duration-150 group-hover:translate-x-0.5"
+              />
+            </Link>
+          </div>
 
-            <motion.div variants={fadeUp()}>
-              <Link to="/projects" className="btn-ghost text-base px-7 py-3">
-                View all projects
-                <ArrowRight size={16} />
-              </Link>
-            </motion.div>
-          </motion.div>
+          <div className="min-w-0 lg:col-span-8">
+            {PROJECTS.map((project) => (
+              <article
+                key={project.name}
+                className="flex flex-col rounded-xl border border-border bg-surface-white p-6 shadow-soft sm:p-8"
+              >
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-muted">
+                    {project.kind}
+                  </span>
+                  <StatusPill tone={project.tone}>{project.status}</StatusPill>
+                </div>
+
+                <h3 className="mt-6 text-display-sm text-ink">{project.name}</h3>
+                <p className="mt-3 max-w-xl flex-1 text-base leading-relaxed text-ink-secondary">
+                  {project.blurb}
+                </p>
+
+                <div className="mt-7">
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary w-full active:bg-primary-900 sm:w-auto"
+                  >
+                    Visit Website
+                    <ExternalLink size={15} aria-hidden="true" />
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════════════
           4. CLOSING CTA
       ════════════════════════════════════════════════════════════════ */}
-      <section className="section bg-surface-soft">
-        <div className="container-page">
-          <motion.div
-            variants={stagger()}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-            className="max-w-2xl mx-auto text-center flex flex-col items-center gap-6"
-          >
-            <motion.img
-            src={logo}
-            alt="RoreDevs logo"
-            variants={fadeUp()}
-            aria-hidden="true"
-            className="h-12 w-12 rounded-2xl object-cover"
-/>
-
-            <motion.h2 variants={fadeUp()} className="text-display-sm text-ink">
-              Want to support what we're building?
-            </motion.h2>
-
-            <motion.p
-              variants={fadeUp()}
-              className="text-base text-ink-secondary leading-relaxed"
-            >
-              We're a community of students building in the open. If you want
-              to collaborate, support us, or just follow along, we'd love to
-              hear from you.
-            </motion.p>
-
-            <motion.div variants={fadeUp()}>
-              <Link to="/contact" className="btn-primary text-base px-7 py-3">
-                Work with us
-                <ArrowRight size={16} />
-              </Link>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+      <CtaPanel
+        eyebrow="Collaborate"
+        title="Want to support what we're building?"
+        description="We're a community of students building in the open. If you want to collaborate, support us, or just follow along, we'd love to hear from you."
+        action={
+          <Link to="/contact" className="btn-inverse btn-lg">
+            Work with us
+            <ArrowRight size={16} aria-hidden="true" />
+          </Link>
+        }
+      />
     </div>
   );
 }

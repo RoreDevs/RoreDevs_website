@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
 import {
   Mail,
   MessageSquare,
@@ -9,21 +8,11 @@ import {
   Linkedin,
   CheckCircle2,
   Loader2,
+  AlertCircle,
 } from "lucide-react";
-import logo from '../assets/ROREDEVS.png';
+import PageHeader from "../components/PageHeader";
 
-// ── Animation helpers (mirrors Home.jsx) ────────────────────────────────────
-const stagger = (delayChildren = 0.05, staggerChildren = 0.12) => ({
-  hidden: {},
-  show: { transition: { delayChildren, staggerChildren } },
-});
-
-const fadeUp = (delay = 0) => ({
-  hidden: { opacity: 0, y: 18 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut", delay } },
-});
-
-// ── Contact channels ─────────────────────────────────────────────────────
+// ── Contact channels — destinations unchanged ──────────────────────────────
 const CHANNELS = [
   {
     icon: Mail,
@@ -51,9 +40,12 @@ const CHANNELS = [
   },
 ];
 
+const EMPTY_FORM = { name: "", email: "", subject: "", message: "" };
+
 export default function Contact() {
-  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+  const [form, setForm] = useState(EMPTY_FORM);
   const [status, setStatus] = useState("idle"); // idle | sending | sent | error
+  const successRef = useRef(null);
 
   useEffect(() => {
     document.title = "Contact RoreDevs | Work With Us or Support the Community";
@@ -63,120 +55,97 @@ export default function Contact() {
     if (canonical) canonical.setAttribute("href", "https://roredevs.tech/contact");
   }, []);
 
+  // Move focus to the confirmation so it is announced and reachable
+  useEffect(() => {
+    if (status === "sent") successRef.current?.focus();
+  }, [status]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  setStatus("sending");
+    e.preventDefault();
+    setStatus("sending");
 
-  try {
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
 
-    if (!res.ok) {
-      throw new Error("Failed to send message");
+      if (!res.ok) throw new Error("Failed to send message");
+
+      setStatus("sent");
+      setForm(EMPTY_FORM);
+    } catch (err) {
+      console.error(err);
+      setStatus("error");
     }
-
-    setStatus("sent");
-    setForm({ name: "", email: "", subject: "", message: "" });
-  } catch (err) {
-    console.error(err);
-    setStatus("error");
-  }
-};
+  };
 
   return (
     <div>
-      {/* ════════════════════════════════════════════════════════════════
-          1. HERO
-      ════════════════════════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden bg-surface-white">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[600px]
-                     rounded-full bg-primary/5 blur-3xl"
-        />
+      <PageHeader
+        eyebrow="Contact"
+        title={
+          <>
+            Support, collaborate,{" "}
+            <span className="text-primary">or work with us.</span>
+          </>
+        }
+        lead="RoreDevs is a community of students building in the open. If you want to support what we're doing, collaborate on a project, contribute resources, or just follow along, drop us a line."
+      />
 
-        <div className="container-page relative z-10 pt-24 pb-16 md:pt-32 md:pb-20 text-center">
-          <motion.div
-            variants={stagger(0.1, 0.14)}
-            initial="hidden"
-            animate="show"
-            className="flex flex-col items-center gap-6"
-          >
-            <motion.h1
-              variants={fadeUp()}
-              className="text-display-xl md:text-display-2xl text-ink max-w-2xl"
-            >
-              Support, collaborate,{" "}
-              <span className="text-primary">or work with us.</span>
-            </motion.h1>
-
-            <motion.p
-              variants={fadeUp()}
-              className="text-lg md:text-xl text-ink-secondary max-w-xl leading-relaxed"
-            >
-              RoreDevs is a community of students building in the open. If you
-              want to support what we're doing, collaborate on a project,
-              contribute resources, or just follow along, drop us a line.
-            </motion.p>
-          </motion.div>
-        </div>
-
-        <div
-          aria-hidden="true"
-          className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-border to-transparent"
-        />
-      </section>
-
-      {/* ════════════════════════════════════════════════════════════════
-          2. FORM + CHANNELS
-      ════════════════════════════════════════════════════════════════ */}
-      <section className="section bg-surface-soft">
-        <div className="container-page">
-          <motion.div
-            variants={stagger()}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-            className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start"
-          >
-            {/* ── Form card ──────────────────────────────────────────── */}
-            <motion.div variants={fadeUp()} className="lg:col-span-3 card p-6 md:p-8">
+      <section className="section bg-surface-white">
+        <div className="container-page grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
+          {/* ── Form ──────────────────────────────────────────────────── */}
+          <div className="min-w-0 lg:col-span-7">
+            <div className="rounded-xl border border-border bg-surface-white p-6 sm:p-8">
               {status === "sent" ? (
-                <div className="flex flex-col items-center text-center gap-4 py-10">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-                    <CheckCircle2 size={24} />
+                <div
+                  ref={successRef}
+                  tabIndex={-1}
+                  role="status"
+                  className="flex flex-col items-start gap-4 py-6 outline-none"
+                >
+                  <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-success-light text-success">
+                    <CheckCircle2 size={22} aria-hidden="true" />
                   </span>
-                  <h3 className="text-display-sm text-ink">Message sent!</h3>
-                  <p className="text-ink-secondary max-w-sm">
-                    Thanks for reaching out, we'll get back to you as soon as
-                    we surface from our latest debugging session.
+                  <h2 className="text-display-sm text-ink">Message sent!</h2>
+                  <p className="max-w-md text-base leading-relaxed text-ink-secondary">
+                    Thanks for reaching out, we'll get back to you as soon as we
+                    surface from our latest debugging session.
                   </p>
                   <button
                     type="button"
                     onClick={() => setStatus("idle")}
-                    className="btn-ghost text-sm px-5 py-2 mt-2"
+                    className="btn-ghost mt-2"
                   >
                     Send another message
                   </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-                  <div className="flex items-center gap-2 mb-1">
-                    <MessageSquare size={18} className="text-primary" />
-                    <h2 className="text-display-sm text-ink">Send us a message</h2>
+                  <div className="flex items-center gap-2.5">
+                    <MessageSquare
+                      size={18}
+                      className="text-primary"
+                      aria-hidden="true"
+                    />
+                    <h2 className="text-display-sm text-ink">
+                      Send us a message
+                    </h2>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                     <div className="flex flex-col gap-1.5">
-                      <label htmlFor="name" className="text-sm font-medium text-ink-secondary">
+                      <label
+                        htmlFor="name"
+                        className="text-sm font-medium text-ink-secondary"
+                      >
                         Name
                       </label>
                       <input
@@ -184,17 +153,19 @@ export default function Contact() {
                         name="name"
                         type="text"
                         required
+                        autoComplete="name"
                         value={form.name}
                         onChange={handleChange}
                         placeholder="Ada Lovelace"
-                        className="w-full rounded-xl border border-border bg-surface-white px-4 py-2.5
-                                   text-ink placeholder:text-ink-muted outline-none transition
-                                   focus:border-primary focus:ring-2 focus:ring-primary/20"
+                        className="input-field"
                       />
                     </div>
 
                     <div className="flex flex-col gap-1.5">
-                      <label htmlFor="email" className="text-sm font-medium text-ink-secondary">
+                      <label
+                        htmlFor="email"
+                        className="text-sm font-medium text-ink-secondary"
+                      >
                         Email
                       </label>
                       <input
@@ -202,18 +173,20 @@ export default function Contact() {
                         name="email"
                         type="email"
                         required
+                        autoComplete="email"
                         value={form.email}
                         onChange={handleChange}
                         placeholder="ada@example.com"
-                        className="w-full rounded-xl border border-border bg-surface-white px-4 py-2.5
-                                   text-ink placeholder:text-ink-muted outline-none transition
-                                   focus:border-primary focus:ring-2 focus:ring-primary/20"
+                        className="input-field"
                       />
                     </div>
                   </div>
 
                   <div className="flex flex-col gap-1.5">
-                    <label htmlFor="subject" className="text-sm font-medium text-ink-secondary">
+                    <label
+                      htmlFor="subject"
+                      className="text-sm font-medium text-ink-secondary"
+                    >
                       Subject
                     </label>
                     <input
@@ -224,14 +197,15 @@ export default function Contact() {
                       value={form.subject}
                       onChange={handleChange}
                       placeholder="Let's build something together"
-                      className="w-full rounded-xl border border-border bg-surface-white px-4 py-2.5
-                                 text-ink placeholder:text-ink-muted outline-none transition
-                                 focus:border-primary focus:ring-2 focus:ring-primary/20"
+                      className="input-field"
                     />
                   </div>
 
                   <div className="flex flex-col gap-1.5">
-                    <label htmlFor="message" className="text-sm font-medium text-ink-secondary">
+                    <label
+                      htmlFor="message"
+                      className="text-sm font-medium text-ink-secondary"
+                    >
                       Message
                     </label>
                     <textarea
@@ -242,79 +216,93 @@ export default function Contact() {
                       value={form.message}
                       onChange={handleChange}
                       placeholder="Tell us what's on your mind..."
-                      className="w-full resize-none rounded-xl border border-border bg-surface-white px-4 py-2.5
-                                 text-ink placeholder:text-ink-muted outline-none transition
-                                 focus:border-primary focus:ring-2 focus:ring-primary/20"
+                      className="input-field resize-y"
                     />
                   </div>
 
                   {status === "error" && (
-                    <p className="text-sm text-red-500">
-                      Something went wrong. Mind trying again?
-                    </p>
+                    <div
+                      role="alert"
+                      className="flex items-start gap-2.5 rounded-lg border border-danger/25 bg-danger-light px-4 py-3"
+                    >
+                      <AlertCircle
+                        size={16}
+                        className="mt-0.5 shrink-0 text-danger"
+                        aria-hidden="true"
+                      />
+                      <p className="text-sm text-danger">
+                        Something went wrong. Mind trying again?
+                      </p>
+                    </div>
                   )}
 
                   <button
                     type="submit"
                     disabled={status === "sending"}
-                    className="btn-primary text-base px-6 py-3 self-start disabled:opacity-60 disabled:cursor-not-allowed"
+                    aria-busy={status === "sending"}
+                    className="btn-primary btn-lg self-start"
                   >
                     {status === "sending" ? (
                       <>
-                        <Loader2 size={16} className="animate-spin" />
+                        <Loader2
+                          size={16}
+                          className="animate-spin"
+                          aria-hidden="true"
+                        />
                         Sending...
                       </>
                     ) : (
                       <>
                         Send message
-                        <Send size={16} />
+                        <Send size={16} aria-hidden="true" />
                       </>
                     )}
                   </button>
                 </form>
               )}
-            </motion.div>
+            </div>
+          </div>
 
-            {/* ── Channels ───────────────────────────────────────────── */}
-            <motion.div variants={fadeUp(0.1)} className="lg:col-span-2 flex flex-col gap-5">
-              <div className="card flex flex-col gap-4">
-                <h3 className="text-sm font-semibold text-ink-secondary uppercase tracking-wide">
-                  Other ways to reach us
-                </h3>
+          {/* ── Channels ──────────────────────────────────────────────── */}
+          <div className="flex min-w-0 flex-col gap-5 lg:col-span-5">
+            <div className="rounded-xl border border-border bg-surface-white p-6">
+              <h2 className="eyebrow">Other ways to reach us</h2>
 
-                <div className="flex flex-col gap-1">
-                  {CHANNELS.map(({ icon: Icon, label, value, href }) => (
+              <ul className="mt-4 flex flex-col">
+                {CHANNELS.map(({ icon: Icon, label, value, href }) => (
+                  <li key={label}>
                     <a
-                      key={label}
                       href={href}
                       target={href.startsWith("http") ? "_blank" : undefined}
                       rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                      className="flex items-center gap-3 rounded-xl px-3 py-2.5 -mx-3 transition
-                                 hover:bg-surface-soft"
+                      className="-mx-2 flex items-center gap-3 rounded-lg px-2 py-2.5 transition-colors hover:bg-surface-soft"
                     >
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                        <Icon size={16} />
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary-50 text-primary">
+                        <Icon size={16} aria-hidden="true" />
                       </span>
-                      <span className="flex flex-col">
-                        <span className="text-xs text-ink-muted">{label}</span>
-                        <span className="text-sm font-medium text-ink">{value}</span>
+                      <span className="flex min-w-0 flex-col">
+                        <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-ink-muted">
+                          {label}
+                        </span>
+                        <span className="truncate text-sm font-medium text-ink">
+                          {value}
+                        </span>
                       </span>
                     </a>
-                  ))}
-                </div>
-              </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-              <div className="card bg-primary/5 border border-primary/10">
-                <p className="text-sm text-ink-secondary leading-relaxed">
-                  <strong className="text-ink font-semibold">Heads up:</strong>{" "}
-                  we're a small student team, so replies might take a day or
-                  two. We promise it's not because we're stuck in a merge
-                  conflict. (It's probably because we're stuck in a merge
-                  conflict.)
-                </p>
-              </div>
-            </motion.div>
-          </motion.div>
+            <div className="rounded-xl border border-primary/15 bg-primary-50 p-6">
+              <p className="text-sm leading-relaxed text-ink-secondary">
+                <strong className="font-semibold text-ink">Heads up:</strong>{" "}
+                we're a small student team, so replies might take a day or two.
+                We promise it's not because we're stuck in a merge conflict.
+                (It's probably because we're stuck in a merge conflict.)
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </div>

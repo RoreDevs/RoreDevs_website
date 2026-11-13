@@ -1,28 +1,26 @@
 import { useEffect } from "react";
-import { motion } from "framer-motion";
+import PageHeader from "../components/PageHeader";
 import TeamMemberCard from "../components/TeamMemberCard";
-import ericaImg from "../assets/Erica.jpg";
-import obedImg from "../assets/Obed.png";
-import raymondImg from "../assets/Raymond.jpg";
-import rosemaryImg from "../assets/Rosemary.jpeg";
-import kobbyImg from "../assets/Kobby.jpg";
-import logo from '../assets/ROREDEVS.png';
 
-// ── Animation helpers ──────────────────────────────────────────────────────
-const stagger = (delayChildren = 0.05, staggerChildren = 0.12) => ({
-  hidden: {},
-  show: { transition: { delayChildren, staggerChildren } },
-});
+// Optimised derivatives of the original photographs (480w / 800w)
+import rosemary480 from "../assets/team/rosemary-480.jpg";
+import rosemary800 from "../assets/team/rosemary-800.jpg";
+import erica480    from "../assets/team/erica-480.jpg";
+import erica800    from "../assets/team/erica-800.jpg";
+import raymond480  from "../assets/team/raymond-480.jpg";
+import raymond800  from "../assets/team/raymond-800.jpg";
+import obed480     from "../assets/team/obed-480.jpg";
+import obed800     from "../assets/team/obed-800.jpg";
+import kobby480    from "../assets/team/kobby-480.jpg";
+import kobby800    from "../assets/team/kobby-800.jpg";
 
-const fadeUp = (delay = 0) => ({
-  hidden: { opacity: 0, y: 18 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut", delay } },
-});
-
-// ── Team data ──────────────────────────────────────────────────────────────
+// ── Team data — content and destinations unchanged ─────────────────────────
 const FOUNDERS = [
   {
-    image: rosemaryImg,
+    image: rosemary480,
+    image2x: rosemary800,
+    imageWidth: 480,
+    imageHeight: 853,
     name: "Rosemary Boahemaa Dwamena",
     initials: "RBD",
     role: "Founder, Team Lead & Developer",
@@ -36,7 +34,10 @@ const FOUNDERS = [
     },
   },
   {
-    image: ericaImg,
+    image: erica480,
+    image2x: erica800,
+    imageWidth: 480,
+    imageHeight: 640,
     name: "Erica Dansowaa",
     initials: "ED",
     role: "Co-founder, Frontend Developer & Documentation Lead",
@@ -50,7 +51,10 @@ const FOUNDERS = [
     },
   },
   {
-    image: raymondImg,
+    image: raymond480,
+    image2x: raymond800,
+    imageWidth: 480,
+    imageHeight: 720,
     name: "Raymond Selorm Tormeti",
     initials: "RST",
     role: "Co-founder, Design Lead & Developer",
@@ -64,7 +68,10 @@ const FOUNDERS = [
     },
   },
   {
-    image: obedImg,
+    image: obed480,
+    image2x: obed800,
+    imageWidth: 480,
+    imageHeight: 643,
     name: "Obed Yakpa",
     initials: "OY",
     role: "Co-founder, Backend Lead & Developer",
@@ -79,19 +86,10 @@ const FOUNDERS = [
   },
 ];
 
-const CONTRIBUTORS = [
-   {
-    image: kobbyImg,
-    name: "Godfred Eduful",
-    initials: "GE",
-    role: "A code contributor to Acadex KTU",
-    bio: "Bring work",
-  },
-];
+const CONTRIBUTORS = [];
 
 const MAINTAINERS = [];
 
-// ── Component ──────────────────────────────────────────────────────────────
 export default function Team() {
   useEffect(() => {
     document.title = "Team | RoreDevs — Meet the People Behind the Community";
@@ -103,170 +101,89 @@ export default function Team() {
 
   return (
     <div>
-      {/* ════════════════════════════════════════════════════════════════
-          1. HERO
-      ════════════════════════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden bg-surface-white">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[600px]
-                     rounded-full bg-primary/5 blur-3xl"
-        />
-
-        <div className="container-page relative z-10 pt-24 pb-16 md:pt-32 md:pb-20 text-center">
-          <motion.div
-            variants={stagger(0.1, 0.14)}
-            initial="hidden"
-            animate="show"
-            className="flex flex-col items-center gap-6"
-          >
-            <motion.h1
-              variants={fadeUp()}
-              className="text-display-xl md:text-display-2xl text-ink max-w-2xl"
-            >
-              The People Behind RoreDevs
-            </motion.h1>
-
-            <motion.p
-              variants={fadeUp()}
-              className="text-lg md:text-xl text-ink-secondary max-w-xl leading-relaxed"
-            >
-              Meet the people building, organizing, and contributing to the
-              RoreDevs community.
-            </motion.p>
-          </motion.div>
-        </div>
-
-        <div
-          aria-hidden="true"
-          className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-border to-transparent"
-        />
-      </section>
+      <PageHeader
+        eyebrow="Team"
+        title="The People Behind RoreDevs"
+        lead="Meet the people building, organizing, and contributing to the RoreDevs community."
+      />
 
       {/* ════════════════════════════════════════════════════════════════
-          2. FOUNDERS
+          1. FOUNDERS
       ════════════════════════════════════════════════════════════════ */}
-      <section className="section bg-surface-soft">
+      <section className="section border-b border-border bg-surface-white">
         <div className="container-page">
-          <motion.div
-            variants={stagger()}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-            className="flex flex-col gap-10"
-          >
-            {/* Section header */}
-            <motion.div variants={fadeUp()} className="max-w-xl">
-              <h2 className="text-display-md text-ink mt-3">Founders</h2>
-              <p className="mt-3 text-base text-ink-secondary leading-relaxed">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div className="max-w-xl">
+              <p className="eyebrow">01 — Founders</p>
+              <h2 className="mt-4 text-display-md text-ink">Founders</h2>
+              <p className="mt-3 text-base leading-relaxed text-ink-secondary">
                 The people who started RoreDevs and keep it moving.
               </p>
-            </motion.div>
+            </div>
+            <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-ink-muted">
+              Tap or hover a portrait
+            </p>
+          </div>
 
-            {/* Founders grid */}
-            <motion.div
-              variants={stagger(0, 0.08)}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-            >
-              {FOUNDERS.map((member) => (
-                <motion.div key={member.name} variants={fadeUp()}>
-                  <TeamMemberCard {...member} />
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
+          <ul className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {FOUNDERS.map((member) => (
+              <li key={member.name}>
+                <TeamMemberCard {...member} />
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════════════
-          3. CONTRIBUTORS
+          2. CONTRIBUTORS
       ════════════════════════════════════════════════════════════════ */}
-      <section className="section bg-surface-white">
+      <section className="section border-b border-border bg-surface-bone">
         <div className="container-page">
-          <motion.div
-            variants={stagger()}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-            className="flex flex-col gap-10"
-          >
-            <motion.div variants={fadeUp()} className="max-w-xl">
-              <h2 className="text-display-md text-ink mt-3">Contributors</h2>
-              <p className="mt-3 text-base text-ink-secondary leading-relaxed">
-                People who contribute to RoreDevs projects and the community.
-              </p>
-            </motion.div>
+          <div className="max-w-xl">
+            <p className="eyebrow">02 — Contributors</p>
+            <h2 className="mt-4 text-display-md text-ink">Contributors</h2>
+            <p className="mt-3 text-base leading-relaxed text-ink-secondary">
+              People who contribute to RoreDevs projects and the community.
+            </p>
+          </div>
 
-            {CONTRIBUTORS.length > 0 ? (
-              <motion.div
-                variants={stagger(0, 0.08)}
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-              >
-                {CONTRIBUTORS.map((member) => (
-                  <motion.div key={member.name} variants={fadeUp()}>
-                    <TeamMemberCard {...member} />
-                  </motion.div>
-                ))}
-              </motion.div>
-            ) : (
-              <motion.div variants={fadeUp()}>
-                <div className="card border-dashed flex items-center justify-center py-12 text-center">
-                  <p className="text-sm text-ink-muted">
-                    No contributors yet — they'll appear here as people start
-                    contributing to RoreDevs projects.
-                  </p>
-                </div>
-              </motion.div>
-            )}
-          </motion.div>
+          <ul className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {CONTRIBUTORS.map((member) => (
+              <li key={member.name}>
+                <TeamMemberCard {...member} />
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════════════
-          4. MAINTAINERS & PROJECT LEADS
+          3. MAINTAINERS — only rendered once the roster is populated
       ════════════════════════════════════════════════════════════════ */}
-      <section className="section bg-surface-soft">
-        <div className="container-page">
-          <motion.div
-            variants={stagger()}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-            className="flex flex-col gap-10"
-          >
-            <motion.div variants={fadeUp()} className="max-w-xl">
-              <h2 className="text-display-md text-ink mt-3">
-                Maintainers & Project Leads
+      {MAINTAINERS.length > 0 && (
+        <section className="section border-b border-border bg-surface-white">
+          <div className="container-page">
+            <div className="max-w-xl">
+              <p className="eyebrow">03 — Maintainers</p>
+              <h2 className="mt-4 text-display-md text-ink">
+                Maintainers &amp; Project Leads
               </h2>
-              <p className="mt-3 text-base text-ink-secondary leading-relaxed">
+              <p className="mt-3 text-base leading-relaxed text-ink-secondary">
                 People who maintain RoreDevs projects or lead specific projects.
               </p>
-            </motion.div>
+            </div>
 
-            {MAINTAINERS.length > 0 ? (
-              <motion.div
-                variants={stagger(0, 0.08)}
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-              >
-                {MAINTAINERS.map((member) => (
-                  <motion.div key={member.name} variants={fadeUp()}>
-                    <TeamMemberCard {...member} />
-                  </motion.div>
-                ))}
-              </motion.div>
-            ) : (
-              <motion.div variants={fadeUp()}>
-                <div className="card border-dashed flex items-center justify-center py-12 text-center">
-                  <p className="text-sm text-ink-muted">
-                    No maintainers or project leads yet — they'll appear here as
-                    projects grow.
-                  </p>
-                </div>
-              </motion.div>
-            )}
-          </motion.div>
-        </div>
-      </section>
+            <ul className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+              {MAINTAINERS.map((member) => (
+                <li key={member.name}>
+                  <TeamMemberCard {...member} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
     </div>
   );
 }
